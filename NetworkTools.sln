@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "TcpClient\TcpC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServer", "TcpServer\TcpServer.csproj", "{26FC522C-57FD-4344-9072-27F370DB4087}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdpClientServer", "UdpClientServer\UdpClientServer.csproj", "{DF8D4B04-920D-47DB-A68B-50A790E7E141}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -31,6 +33,10 @@ Global
 		{26FC522C-57FD-4344-9072-27F370DB4087}.Debug|x86.Build.0 = Debug|x86
 		{26FC522C-57FD-4344-9072-27F370DB4087}.Release|x86.ActiveCfg = Release|x86
 		{26FC522C-57FD-4344-9072-27F370DB4087}.Release|x86.Build.0 = Release|x86
+		{DF8D4B04-920D-47DB-A68B-50A790E7E141}.Debug|x86.ActiveCfg = Debug|x86
+		{DF8D4B04-920D-47DB-A68B-50A790E7E141}.Debug|x86.Build.0 = Debug|x86
+		{DF8D4B04-920D-47DB-A68B-50A790E7E141}.Release|x86.ActiveCfg = Release|x86
+		{DF8D4B04-920D-47DB-A68B-50A790E7E141}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
