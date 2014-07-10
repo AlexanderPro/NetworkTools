@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Pro.NET.Utilities</id>
+    <version>1.0.5303.27637</version>
+    <title>.NET Utilities</title>
+    <authors>Alexander Illarionov</authors>
+    <owners>Alexander Illarionov</owners>
+    <projectUrl>http://github.com/AlexanderPro/Utilities</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This .net library contains many useful methods, extensions, helper classes, etc.</description>
+    <copyright>Copyright 2014</copyright>
+  </metadata>
+</package>

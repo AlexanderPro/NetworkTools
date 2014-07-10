@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpRequester", "HttpRequester\HttpRequester.csproj", "{76DB2A11-7A74-4434-A5C3-5562EC37A323}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmtpClient", "SmtpClient\SmtpClient.csproj", "{A0DF6135-E490-4627-ABF4-04A9EF0BEBFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{76DB2A11-7A74-4434-A5C3-5562EC37A323}.Debug|x86.Build.0 = Debug|x86
 		{76DB2A11-7A74-4434-A5C3-5562EC37A323}.Release|x86.ActiveCfg = Release|x86
 		{76DB2A11-7A74-4434-A5C3-5562EC37A323}.Release|x86.Build.0 = Release|x86
+		{A0DF6135-E490-4627-ABF4-04A9EF0BEBFF}.Debug|x86.ActiveCfg = Debug|x86
+		{A0DF6135-E490-4627-ABF4-04A9EF0BEBFF}.Debug|x86.Build.0 = Debug|x86
+		{A0DF6135-E490-4627-ABF4-04A9EF0BEBFF}.Release|x86.ActiveCfg = Release|x86
+		{A0DF6135-E490-4627-ABF4-04A9EF0BEBFF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
