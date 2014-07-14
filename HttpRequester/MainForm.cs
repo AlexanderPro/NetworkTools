@@ -76,13 +76,13 @@ namespace HttpRequester
 
             if (String.IsNullOrWhiteSpace(txtUrl.Text) || !Uri.TryCreate(txtUrl.Text, UriKind.RelativeOrAbsolute, out urlAddress))
             {
-                MessageBox.Show("Field \"URL\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"URL\" has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (String.IsNullOrWhiteSpace(txtMethod.Text))
             {
-                MessageBox.Show("Field \"Method\" must not be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"Method\" must not be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -92,13 +92,13 @@ namespace HttpRequester
             }
             catch
             {
-                MessageBox.Show("Field \"Encoding\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"Encoding\" has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!Int32.TryParse(txtTimeout.Text, out timeout))
             {
-                MessageBox.Show("Field \"Timeout\" must have an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"Timeout\" must have an integer number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -114,7 +114,7 @@ namespace HttpRequester
                 headers.Add(headerName, headerValue);
                 if (String.IsNullOrWhiteSpace(headerName))
                 {
-                    MessageBox.Show("Header name must not be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Header name must not be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
