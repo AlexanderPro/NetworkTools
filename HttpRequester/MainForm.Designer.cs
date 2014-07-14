@@ -130,7 +130,7 @@
             this.gridHeaders.RowHeadersVisible = false;
             this.gridHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gridHeaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.gridHeaders.Size = new System.Drawing.Size(346, 113);
+            this.gridHeaders.Size = new System.Drawing.Size(349, 113);
             this.gridHeaders.TabIndex = 0;
             this.gridHeaders.TabStop = false;
             this.gridHeaders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellClick);
@@ -148,11 +148,11 @@
             // 
             this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRequest.Location = new System.Drawing.Point(16, 433);
+            this.txtRequest.Location = new System.Drawing.Point(12, 433);
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRequest.Size = new System.Drawing.Size(347, 117);
+            this.txtRequest.Size = new System.Drawing.Size(351, 117);
             this.txtRequest.TabIndex = 11;
             // 
             // lblRequest
@@ -227,10 +227,10 @@
             // 
             this.pnlGridBorder.BackColor = System.Drawing.SystemColors.ControlDark;
             this.pnlGridBorder.Controls.Add(this.gridHeaders);
-            this.pnlGridBorder.Location = new System.Drawing.Point(15, 270);
+            this.pnlGridBorder.Location = new System.Drawing.Point(12, 270);
             this.pnlGridBorder.Name = "pnlGridBorder";
             this.pnlGridBorder.Padding = new System.Windows.Forms.Padding(1);
-            this.pnlGridBorder.Size = new System.Drawing.Size(348, 115);
+            this.pnlGridBorder.Size = new System.Drawing.Size(351, 115);
             this.pnlGridBorder.TabIndex = 16;
             // 
             // statusStrip
