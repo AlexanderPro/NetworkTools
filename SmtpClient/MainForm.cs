@@ -19,31 +19,74 @@ namespace SmtpClient
 
         private void SendMailClick(object sender, EventArgs e)
         {
+            var serverName = txtServerName.Text;
+            var userName = txtUserName.Text;
+            var password = txtPassword.Text;
+            var useSSL = chbUseSsl.Checked;
+            var to = txtTo.Text;
+            var cc = txtCc.Text;
+            var bcc = txtBcc.Text;
+            var from = txtFrom.Text;
+            var senderName = txtSenderName.Text;
+            var subject = txtSubject.Text;
+            var body = txtBody.Text;
+            var isBodyHtml = chbHtml.Checked;
+
+            Int32 serverPort;
+            if (!Int32.TryParse(txtServerPort.Text, out serverPort))
+            {
+                MessageBox.Show("Field \"Server Port\" must have an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Encoding subjectEncoding;
             try
             {
-                var emailSender = new EmailSender()
-                {
-                    Server = txtServerName.Text,
-                    Port = Int32.Parse(txtServerPort.Text),
-                    UserName = txtUserName.Text,
-                    Password = txtPassword.Text,
-                    UseSSL = chbUseSsl.Checked,
-                    StringTo = txtTo.Text,
-                    StringCC = txtCc.Text,
-                    StringBcc = txtBcc.Text,
-                    From = txtFrom.Text,
-                    SenderName = txtSenderName.Text,
-                    Subject = txtSubject.Text,
-                    Body = txtBody.Text,
-                    SubjectEncoding = String.IsNullOrEmpty(txtSubjectEncoding.Text) ? Encoding.GetEncoding("utf-8") : Encoding.GetEncoding(txtSubjectEncoding.Text),
-                    BodyEncoding = String.IsNullOrEmpty(txtBodyEncoding.Text) ? Encoding.GetEncoding("utf-8") : Encoding.GetEncoding(txtBodyEncoding.Text),
-                    IsBodyHtml = chbHtml.Checked
-                };
+                subjectEncoding = Encoding.GetEncoding(txtSubjectEncoding.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Field \"Subject Encoding\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Encoding bodyEncoding;
+            try
+            {
+                bodyEncoding = Encoding.GetEncoding(txtBodyEncoding.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Field \"Body Encoding\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var emailSender = new EmailSender()
+            {
+                Server = serverName,
+                Port = serverPort,
+                UserName = userName,
+                Password = password,
+                UseSSL = useSSL,
+                StringTo = to,
+                StringCC = cc,
+                StringBcc = bcc,
+                From = from,
+                SenderName = senderName,
+                Subject = subject,
+                Body = body,
+                SubjectEncoding = subjectEncoding,
+                BodyEncoding = bodyEncoding,
+                IsBodyHtml = isBodyHtml
+            };
+
+            try
+            {
                 emailSender.SendMail();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

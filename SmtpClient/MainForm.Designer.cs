@@ -357,6 +357,7 @@
             this.txtBodyEncoding.Name = "txtBodyEncoding";
             this.txtBodyEncoding.Size = new System.Drawing.Size(214, 20);
             this.txtBodyEncoding.TabIndex = 5;
+            this.txtBodyEncoding.Text = "UTF-8";
             // 
             // lblBodyEncoding
             // 
@@ -373,6 +374,7 @@
             this.txtSubjectEncoding.Name = "txtSubjectEncoding";
             this.txtSubjectEncoding.Size = new System.Drawing.Size(214, 20);
             this.txtSubjectEncoding.TabIndex = 3;
+            this.txtSubjectEncoding.Text = "UTF-8";
             // 
             // lblSubjectEncoding
             // 
