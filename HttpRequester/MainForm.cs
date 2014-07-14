@@ -105,7 +105,7 @@ namespace HttpRequester
             url = txtUrl.Text;
             method = txtMethod.Text;
             var requestContent = txtRequest.Text;
-            var sendRequestContent = chkSendRequestContent.Checked;
+            var sendRequestContent = !String.IsNullOrEmpty(requestContent);
             var headers = new Dictionary<String, String>();
             foreach (DataGridViewRow row in gridHeaders.Rows)
             {
