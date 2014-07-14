@@ -107,7 +107,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Add http header";
+            this.Text = "Http Header";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
