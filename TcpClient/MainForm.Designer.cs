@@ -89,7 +89,7 @@
             this.txtSendData.Multiline = true;
             this.txtSendData.Name = "txtSendData";
             this.txtSendData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtSendData.Size = new System.Drawing.Size(599, 109);
+            this.txtSendData.Size = new System.Drawing.Size(506, 109);
             this.txtSendData.TabIndex = 5;
             // 
             // txtRemoteAddress
@@ -131,7 +131,7 @@
             // btnConnect
             // 
             this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConnect.Location = new System.Drawing.Point(653, 580);
+            this.btnConnect.Location = new System.Drawing.Point(560, 580);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(97, 23);
             this.btnConnect.TabIndex = 8;
@@ -143,7 +143,7 @@
             // 
             this.btnDisconnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDisconnect.Enabled = false;
-            this.btnDisconnect.Location = new System.Drawing.Point(760, 580);
+            this.btnDisconnect.Location = new System.Drawing.Point(667, 580);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(97, 23);
             this.btnDisconnect.TabIndex = 9;
@@ -163,7 +163,7 @@
             this.grpSendData.Controls.Add(this.txtSendData);
             this.grpSendData.Location = new System.Drawing.Point(6, 12);
             this.grpSendData.Name = "grpSendData";
-            this.grpSendData.Size = new System.Drawing.Size(631, 178);
+            this.grpSendData.Size = new System.Drawing.Size(538, 178);
             this.grpSendData.TabIndex = 0;
             this.grpSendData.TabStop = false;
             this.grpSendData.Text = "Send Data";
@@ -171,7 +171,7 @@
             // btnClearSendData
             // 
             this.btnClearSendData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearSendData.Location = new System.Drawing.Point(559, 24);
+            this.btnClearSendData.Location = new System.Drawing.Point(466, 24);
             this.btnClearSendData.Name = "btnClearSendData";
             this.btnClearSendData.Size = new System.Drawing.Size(53, 23);
             this.btnClearSendData.TabIndex = 4;
@@ -231,7 +231,7 @@
             this.grpStatusLog.Controls.Add(this.txtStatusLog);
             this.grpStatusLog.Location = new System.Drawing.Point(6, 380);
             this.grpStatusLog.Name = "grpStatusLog";
-            this.grpStatusLog.Size = new System.Drawing.Size(631, 185);
+            this.grpStatusLog.Size = new System.Drawing.Size(538, 185);
             this.grpStatusLog.TabIndex = 2;
             this.grpStatusLog.TabStop = false;
             this.grpStatusLog.Text = "Status Log";
@@ -239,7 +239,7 @@
             // btnClearStatusLog
             // 
             this.btnClearStatusLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearStatusLog.Location = new System.Drawing.Point(559, 15);
+            this.btnClearStatusLog.Location = new System.Drawing.Point(466, 15);
             this.btnClearStatusLog.Name = "btnClearStatusLog";
             this.btnClearStatusLog.Size = new System.Drawing.Size(53, 23);
             this.btnClearStatusLog.TabIndex = 0;
@@ -257,14 +257,14 @@
             this.txtStatusLog.Multiline = true;
             this.txtStatusLog.Name = "txtStatusLog";
             this.txtStatusLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtStatusLog.Size = new System.Drawing.Size(601, 129);
+            this.txtStatusLog.Size = new System.Drawing.Size(508, 129);
             this.txtStatusLog.TabIndex = 1;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSend.Enabled = false;
-            this.btnSend.Location = new System.Drawing.Point(867, 580);
+            this.btnSend.Location = new System.Drawing.Point(774, 580);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(97, 23);
             this.btnSend.TabIndex = 10;
@@ -373,7 +373,7 @@
             this.grpReceivedData.Controls.Add(this.txtReceivedData);
             this.grpReceivedData.Location = new System.Drawing.Point(6, 196);
             this.grpReceivedData.Name = "grpReceivedData";
-            this.grpReceivedData.Size = new System.Drawing.Size(631, 178);
+            this.grpReceivedData.Size = new System.Drawing.Size(538, 178);
             this.grpReceivedData.TabIndex = 1;
             this.grpReceivedData.TabStop = false;
             this.grpReceivedData.Text = "Received Data";
@@ -381,7 +381,7 @@
             // btnClearReceivedData
             // 
             this.btnClearReceivedData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearReceivedData.Location = new System.Drawing.Point(559, 24);
+            this.btnClearReceivedData.Location = new System.Drawing.Point(466, 24);
             this.btnClearReceivedData.Name = "btnClearReceivedData";
             this.btnClearReceivedData.Size = new System.Drawing.Size(53, 23);
             this.btnClearReceivedData.TabIndex = 4;
@@ -418,7 +418,7 @@
             this.txtReceivedData.Multiline = true;
             this.txtReceivedData.Name = "txtReceivedData";
             this.txtReceivedData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtReceivedData.Size = new System.Drawing.Size(599, 109);
+            this.txtReceivedData.Size = new System.Drawing.Size(506, 109);
             this.txtReceivedData.TabIndex = 5;
             // 
             // grpSSL
@@ -440,7 +440,7 @@
             this.grpSSL.Controls.Add(this.lblSSLProtocol);
             this.grpSSL.Controls.Add(this.cmbSSLProtocol);
             this.grpSSL.Controls.Add(this.lblCertificateRevocation);
-            this.grpSSL.Location = new System.Drawing.Point(653, 12);
+            this.grpSSL.Location = new System.Drawing.Point(560, 12);
             this.grpSSL.Name = "grpSSL";
             this.grpSSL.Size = new System.Drawing.Size(311, 553);
             this.grpSSL.TabIndex = 3;
@@ -533,7 +533,7 @@
             this.lblReceivedTotalBytes});
             this.statusStrip.Location = new System.Drawing.Point(0, 614);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(978, 22);
+            this.statusStrip.Size = new System.Drawing.Size(885, 22);
             this.statusStrip.TabIndex = 11;
             // 
             // lblSentBytes
@@ -568,7 +568,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 636);
+            this.ClientSize = new System.Drawing.Size(885, 636);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.txtRemotePort);
             this.Controls.Add(this.txtRemoteAddress);
