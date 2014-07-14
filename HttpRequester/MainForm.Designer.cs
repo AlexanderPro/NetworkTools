@@ -36,9 +36,6 @@
             this.lblTimeout = new System.Windows.Forms.Label();
             this.txtTimeout = new System.Windows.Forms.TextBox();
             this.gridHeaders = new System.Windows.Forms.DataGridView();
-            this.clmnButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.clmnHeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnHeaderValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblHeaders = new System.Windows.Forms.Label();
             this.txtRequest = new System.Windows.Forms.TextBox();
             this.lblRequest = new System.Windows.Forms.Label();
@@ -52,6 +49,11 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lblInterval = new System.Windows.Forms.ToolStripStatusLabel();
             this.chkSendRequestContent = new System.Windows.Forms.CheckBox();
+            this.clmnButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmnHeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnHeaderValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClearRequestContent = new System.Windows.Forms.Button();
+            this.btnClearResponseContent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
             this.pnlGridBorder.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -59,17 +61,15 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUrl.Location = new System.Drawing.Point(90, 21);
+            this.txtUrl.Location = new System.Drawing.Point(12, 30);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(461, 20);
+            this.txtUrl.Size = new System.Drawing.Size(351, 20);
             this.txtUrl.TabIndex = 1;
             // 
             // lblUrl
             // 
             this.lblUrl.AutoSize = true;
-            this.lblUrl.Location = new System.Drawing.Point(9, 24);
+            this.lblUrl.Location = new System.Drawing.Point(12, 14);
             this.lblUrl.Name = "lblUrl";
             this.lblUrl.Size = new System.Drawing.Size(32, 13);
             this.lblUrl.TabIndex = 0;
@@ -78,7 +78,7 @@
             // lblMethod
             // 
             this.lblMethod.AutoSize = true;
-            this.lblMethod.Location = new System.Drawing.Point(9, 58);
+            this.lblMethod.Location = new System.Drawing.Point(12, 74);
             this.lblMethod.Name = "lblMethod";
             this.lblMethod.Size = new System.Drawing.Size(46, 13);
             this.lblMethod.TabIndex = 2;
@@ -86,18 +86,16 @@
             // 
             // txtMethod
             // 
-            this.txtMethod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMethod.Location = new System.Drawing.Point(90, 55);
+            this.txtMethod.Location = new System.Drawing.Point(12, 90);
             this.txtMethod.Name = "txtMethod";
-            this.txtMethod.Size = new System.Drawing.Size(461, 20);
+            this.txtMethod.Size = new System.Drawing.Size(351, 20);
             this.txtMethod.TabIndex = 3;
             this.txtMethod.Text = "GET";
             // 
             // lblTimeout
             // 
             this.lblTimeout.AutoSize = true;
-            this.lblTimeout.Location = new System.Drawing.Point(9, 128);
+            this.lblTimeout.Location = new System.Drawing.Point(12, 194);
             this.lblTimeout.Name = "lblTimeout";
             this.lblTimeout.Size = new System.Drawing.Size(70, 13);
             this.lblTimeout.TabIndex = 6;
@@ -105,11 +103,9 @@
             // 
             // txtTimeout
             // 
-            this.txtTimeout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTimeout.Location = new System.Drawing.Point(90, 125);
+            this.txtTimeout.Location = new System.Drawing.Point(12, 210);
             this.txtTimeout.Name = "txtTimeout";
-            this.txtTimeout.Size = new System.Drawing.Size(461, 20);
+            this.txtTimeout.Size = new System.Drawing.Size(351, 20);
             this.txtTimeout.TabIndex = 7;
             this.txtTimeout.Text = "60000";
             // 
@@ -134,9 +130,135 @@
             this.gridHeaders.RowHeadersVisible = false;
             this.gridHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gridHeaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.gridHeaders.Size = new System.Drawing.Size(537, 113);
+            this.gridHeaders.Size = new System.Drawing.Size(346, 113);
             this.gridHeaders.TabIndex = 0;
             this.gridHeaders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellClick);
+            // 
+            // lblHeaders
+            // 
+            this.lblHeaders.AutoSize = true;
+            this.lblHeaders.Location = new System.Drawing.Point(12, 254);
+            this.lblHeaders.Name = "lblHeaders";
+            this.lblHeaders.Size = new System.Drawing.Size(50, 13);
+            this.lblHeaders.TabIndex = 8;
+            this.lblHeaders.Text = "Headers:";
+            // 
+            // txtRequest
+            // 
+            this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtRequest.Location = new System.Drawing.Point(16, 433);
+            this.txtRequest.Multiline = true;
+            this.txtRequest.Name = "txtRequest";
+            this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtRequest.Size = new System.Drawing.Size(347, 117);
+            this.txtRequest.TabIndex = 11;
+            // 
+            // lblRequest
+            // 
+            this.lblRequest.AutoSize = true;
+            this.lblRequest.Location = new System.Drawing.Point(15, 417);
+            this.lblRequest.Name = "lblRequest";
+            this.lblRequest.Size = new System.Drawing.Size(89, 13);
+            this.lblRequest.TabIndex = 10;
+            this.lblRequest.Text = "Request content:";
+            // 
+            // lblResponseContent
+            // 
+            this.lblResponseContent.AutoSize = true;
+            this.lblResponseContent.Location = new System.Drawing.Point(382, 14);
+            this.lblResponseContent.Name = "lblResponseContent";
+            this.lblResponseContent.Size = new System.Drawing.Size(97, 13);
+            this.lblResponseContent.TabIndex = 14;
+            this.lblResponseContent.Text = "Response content:";
+            // 
+            // txtResponse
+            // 
+            this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResponse.Location = new System.Drawing.Point(385, 30);
+            this.txtResponse.Multiline = true;
+            this.txtResponse.Name = "txtResponse";
+            this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtResponse.Size = new System.Drawing.Size(351, 520);
+            this.txtResponse.TabIndex = 15;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.Location = new System.Drawing.Point(613, 591);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(123, 30);
+            this.btnSend.TabIndex = 17;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.ButtonSendClick);
+            // 
+            // btnAddHeader
+            // 
+            this.btnAddHeader.Location = new System.Drawing.Point(328, 390);
+            this.btnAddHeader.Name = "btnAddHeader";
+            this.btnAddHeader.Size = new System.Drawing.Size(35, 23);
+            this.btnAddHeader.TabIndex = 9;
+            this.btnAddHeader.Text = "+";
+            this.btnAddHeader.UseVisualStyleBackColor = true;
+            this.btnAddHeader.Click += new System.EventHandler(this.ButtonAddHeaderClick);
+            // 
+            // lblEncoding
+            // 
+            this.lblEncoding.AutoSize = true;
+            this.lblEncoding.Location = new System.Drawing.Point(12, 134);
+            this.lblEncoding.Name = "lblEncoding";
+            this.lblEncoding.Size = new System.Drawing.Size(55, 13);
+            this.lblEncoding.TabIndex = 4;
+            this.lblEncoding.Text = "Encoding:";
+            // 
+            // txtEncoding
+            // 
+            this.txtEncoding.Location = new System.Drawing.Point(12, 150);
+            this.txtEncoding.Name = "txtEncoding";
+            this.txtEncoding.Size = new System.Drawing.Size(351, 20);
+            this.txtEncoding.TabIndex = 5;
+            this.txtEncoding.Text = "UTF-8";
+            // 
+            // pnlGridBorder
+            // 
+            this.pnlGridBorder.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pnlGridBorder.Controls.Add(this.gridHeaders);
+            this.pnlGridBorder.Location = new System.Drawing.Point(15, 270);
+            this.pnlGridBorder.Name = "pnlGridBorder";
+            this.pnlGridBorder.Padding = new System.Windows.Forms.Padding(1);
+            this.pnlGridBorder.Size = new System.Drawing.Size(348, 115);
+            this.pnlGridBorder.TabIndex = 16;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblInterval});
+            this.statusStrip.Location = new System.Drawing.Point(0, 638);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(750, 24);
+            this.statusStrip.TabIndex = 18;
+            // 
+            // lblInterval
+            // 
+            this.lblInterval.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.lblInterval.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.lblInterval.Name = "lblInterval";
+            this.lblInterval.Size = new System.Drawing.Size(119, 19);
+            this.lblInterval.Text = "Interval: 00:00:00.000";
+            // 
+            // chkSendRequestContent
+            // 
+            this.chkSendRequestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkSendRequestContent.AutoSize = true;
+            this.chkSendRequestContent.Location = new System.Drawing.Point(16, 556);
+            this.chkSendRequestContent.Name = "chkSendRequestContent";
+            this.chkSendRequestContent.Size = new System.Drawing.Size(134, 17);
+            this.chkSendRequestContent.TabIndex = 12;
+            this.chkSendRequestContent.Text = "Send Request Content";
+            this.chkSendRequestContent.UseVisualStyleBackColor = true;
             // 
             // clmnButton
             // 
@@ -150,155 +272,46 @@
             // clmnHeaderName
             // 
             this.clmnHeaderName.HeaderText = "Header Name";
-            this.clmnHeaderName.MinimumWidth = 255;
+            this.clmnHeaderName.MinimumWidth = 160;
             this.clmnHeaderName.Name = "clmnHeaderName";
             this.clmnHeaderName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnHeaderName.Width = 255;
+            this.clmnHeaderName.Width = 160;
             // 
             // clmnHeaderValue
             // 
             this.clmnHeaderValue.HeaderText = "Header Value";
-            this.clmnHeaderValue.MinimumWidth = 260;
+            this.clmnHeaderValue.MinimumWidth = 160;
             this.clmnHeaderValue.Name = "clmnHeaderValue";
             this.clmnHeaderValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnHeaderValue.Width = 260;
+            this.clmnHeaderValue.Width = 160;
             // 
-            // lblHeaders
+            // btnClearRequestContent
             // 
-            this.lblHeaders.AutoSize = true;
-            this.lblHeaders.Location = new System.Drawing.Point(9, 164);
-            this.lblHeaders.Name = "lblHeaders";
-            this.lblHeaders.Size = new System.Drawing.Size(50, 13);
-            this.lblHeaders.TabIndex = 8;
-            this.lblHeaders.Text = "Headers:";
+            this.btnClearRequestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClearRequestContent.Location = new System.Drawing.Point(322, 552);
+            this.btnClearRequestContent.Name = "btnClearRequestContent";
+            this.btnClearRequestContent.Size = new System.Drawing.Size(41, 23);
+            this.btnClearRequestContent.TabIndex = 13;
+            this.btnClearRequestContent.Text = "Clear";
+            this.btnClearRequestContent.UseVisualStyleBackColor = true;
             // 
-            // txtRequest
+            // btnClearResponseContent
             // 
-            this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRequest.Location = new System.Drawing.Point(12, 336);
-            this.txtRequest.Multiline = true;
-            this.txtRequest.Name = "txtRequest";
-            this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRequest.Size = new System.Drawing.Size(539, 86);
-            this.txtRequest.TabIndex = 11;
-            // 
-            // lblRequest
-            // 
-            this.lblRequest.AutoSize = true;
-            this.lblRequest.Location = new System.Drawing.Point(12, 320);
-            this.lblRequest.Name = "lblRequest";
-            this.lblRequest.Size = new System.Drawing.Size(89, 13);
-            this.lblRequest.TabIndex = 10;
-            this.lblRequest.Text = "Request content:";
-            // 
-            // lblResponseContent
-            // 
-            this.lblResponseContent.AutoSize = true;
-            this.lblResponseContent.Location = new System.Drawing.Point(12, 460);
-            this.lblResponseContent.Name = "lblResponseContent";
-            this.lblResponseContent.Size = new System.Drawing.Size(97, 13);
-            this.lblResponseContent.TabIndex = 13;
-            this.lblResponseContent.Text = "Response content:";
-            // 
-            // txtResponse
-            // 
-            this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponse.Location = new System.Drawing.Point(12, 476);
-            this.txtResponse.Multiline = true;
-            this.txtResponse.Name = "txtResponse";
-            this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResponse.Size = new System.Drawing.Size(539, 82);
-            this.txtResponse.TabIndex = 14;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(428, 573);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(123, 30);
-            this.btnSend.TabIndex = 15;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.ButtonSendClick);
-            // 
-            // btnAddHeader
-            // 
-            this.btnAddHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddHeader.Location = new System.Drawing.Point(516, 298);
-            this.btnAddHeader.Name = "btnAddHeader";
-            this.btnAddHeader.Size = new System.Drawing.Size(35, 23);
-            this.btnAddHeader.TabIndex = 9;
-            this.btnAddHeader.Text = "+";
-            this.btnAddHeader.UseVisualStyleBackColor = true;
-            this.btnAddHeader.Click += new System.EventHandler(this.ButtonAddHeaderClick);
-            // 
-            // lblEncoding
-            // 
-            this.lblEncoding.AutoSize = true;
-            this.lblEncoding.Location = new System.Drawing.Point(9, 93);
-            this.lblEncoding.Name = "lblEncoding";
-            this.lblEncoding.Size = new System.Drawing.Size(55, 13);
-            this.lblEncoding.TabIndex = 4;
-            this.lblEncoding.Text = "Encoding:";
-            // 
-            // txtEncoding
-            // 
-            this.txtEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEncoding.Location = new System.Drawing.Point(90, 90);
-            this.txtEncoding.Name = "txtEncoding";
-            this.txtEncoding.Size = new System.Drawing.Size(461, 20);
-            this.txtEncoding.TabIndex = 5;
-            this.txtEncoding.Text = "UTF-8";
-            // 
-            // pnlGridBorder
-            // 
-            this.pnlGridBorder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlGridBorder.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlGridBorder.Controls.Add(this.gridHeaders);
-            this.pnlGridBorder.Location = new System.Drawing.Point(12, 180);
-            this.pnlGridBorder.Name = "pnlGridBorder";
-            this.pnlGridBorder.Padding = new System.Windows.Forms.Padding(1);
-            this.pnlGridBorder.Size = new System.Drawing.Size(539, 115);
-            this.pnlGridBorder.TabIndex = 16;
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblInterval});
-            this.statusStrip.Location = new System.Drawing.Point(0, 623);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(565, 24);
-            this.statusStrip.TabIndex = 16;
-            // 
-            // lblInterval
-            // 
-            this.lblInterval.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
-            this.lblInterval.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.lblInterval.Name = "lblInterval";
-            this.lblInterval.Size = new System.Drawing.Size(119, 19);
-            this.lblInterval.Text = "Interval: 00:00:00.000";
-            // 
-            // chkSendRequestContent
-            // 
-            this.chkSendRequestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkSendRequestContent.AutoSize = true;
-            this.chkSendRequestContent.Location = new System.Drawing.Point(423, 424);
-            this.chkSendRequestContent.Name = "chkSendRequestContent";
-            this.chkSendRequestContent.Size = new System.Drawing.Size(134, 17);
-            this.chkSendRequestContent.TabIndex = 12;
-            this.chkSendRequestContent.Text = "Send Request Content";
-            this.chkSendRequestContent.UseVisualStyleBackColor = true;
+            this.btnClearResponseContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearResponseContent.Location = new System.Drawing.Point(695, 552);
+            this.btnClearResponseContent.Name = "btnClearResponseContent";
+            this.btnClearResponseContent.Size = new System.Drawing.Size(41, 23);
+            this.btnClearResponseContent.TabIndex = 16;
+            this.btnClearResponseContent.Text = "Clear";
+            this.btnClearResponseContent.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 647);
+            this.ClientSize = new System.Drawing.Size(750, 662);
+            this.Controls.Add(this.btnClearResponseContent);
+            this.Controls.Add(this.btnClearRequestContent);
             this.Controls.Add(this.chkSendRequestContent);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.pnlGridBorder);
@@ -349,12 +362,14 @@
         private System.Windows.Forms.Label lblEncoding;
         private System.Windows.Forms.TextBox txtEncoding;
         private System.Windows.Forms.Panel pnlGridBorder;
-        private System.Windows.Forms.DataGridViewButtonColumn clmnButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHeaderName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHeaderValue;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel lblInterval;
         private System.Windows.Forms.CheckBox chkSendRequestContent;
+        private System.Windows.Forms.DataGridViewButtonColumn clmnButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHeaderName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHeaderValue;
+        private System.Windows.Forms.Button btnClearRequestContent;
+        private System.Windows.Forms.Button btnClearResponseContent;
     }
 }
 
