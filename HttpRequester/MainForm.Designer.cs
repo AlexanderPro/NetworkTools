@@ -53,6 +53,9 @@
             this.clmnButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.clmnHeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnHeaderValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbUseProxy = new System.Windows.Forms.ComboBox();
+            this.lblUseProxy = new System.Windows.Forms.Label();
+            this.btnProxy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
             this.pnlGridBorder.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -148,7 +151,7 @@
             // 
             this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRequest.Location = new System.Drawing.Point(12, 313);
+            this.txtRequest.Location = new System.Drawing.Point(12, 433);
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -158,7 +161,7 @@
             // lblRequest
             // 
             this.lblRequest.AutoSize = true;
-            this.lblRequest.Location = new System.Drawing.Point(15, 297);
+            this.lblRequest.Location = new System.Drawing.Point(15, 417);
             this.lblRequest.Name = "lblRequest";
             this.lblRequest.Size = new System.Drawing.Size(89, 13);
             this.lblRequest.TabIndex = 10;
@@ -253,7 +256,7 @@
             // btnClearRequestContent
             // 
             this.btnClearRequestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClearRequestContent.Location = new System.Drawing.Point(391, 432);
+            this.btnClearRequestContent.Location = new System.Drawing.Point(391, 552);
             this.btnClearRequestContent.Name = "btnClearRequestContent";
             this.btnClearRequestContent.Size = new System.Drawing.Size(41, 23);
             this.btnClearRequestContent.TabIndex = 13;
@@ -299,11 +302,45 @@
             this.clmnHeaderValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.clmnHeaderValue.Width = 200;
             // 
+            // cmbUseProxy
+            // 
+            this.cmbUseProxy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUseProxy.FormattingEnabled = true;
+            this.cmbUseProxy.Location = new System.Drawing.Point(12, 316);
+            this.cmbUseProxy.Name = "cmbUseProxy";
+            this.cmbUseProxy.Size = new System.Drawing.Size(121, 21);
+            this.cmbUseProxy.TabIndex = 19;
+            this.cmbUseProxy.Tag = "btnProxy";
+            this.cmbUseProxy.SelectedIndexChanged += new System.EventHandler(this.ComboBoxChanged);
+            // 
+            // lblUseProxy
+            // 
+            this.lblUseProxy.AutoSize = true;
+            this.lblUseProxy.Location = new System.Drawing.Point(12, 300);
+            this.lblUseProxy.Name = "lblUseProxy";
+            this.lblUseProxy.Size = new System.Drawing.Size(58, 13);
+            this.lblUseProxy.TabIndex = 20;
+            this.lblUseProxy.Text = "Use Proxy:";
+            // 
+            // btnProxy
+            // 
+            this.btnProxy.Enabled = false;
+            this.btnProxy.Location = new System.Drawing.Point(139, 315);
+            this.btnProxy.Name = "btnProxy";
+            this.btnProxy.Size = new System.Drawing.Size(74, 23);
+            this.btnProxy.TabIndex = 21;
+            this.btnProxy.Text = "Proxy";
+            this.btnProxy.UseVisualStyleBackColor = true;
+            this.btnProxy.Click += new System.EventHandler(this.ButtonProxyClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 662);
+            this.Controls.Add(this.btnProxy);
+            this.Controls.Add(this.lblUseProxy);
+            this.Controls.Add(this.cmbUseProxy);
             this.Controls.Add(this.btnClearResponseContent);
             this.Controls.Add(this.btnClearRequestContent);
             this.Controls.Add(this.statusStrip);
@@ -362,6 +399,9 @@
         private System.Windows.Forms.DataGridViewButtonColumn clmnButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnHeaderName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnHeaderValue;
+        private System.Windows.Forms.ComboBox cmbUseProxy;
+        private System.Windows.Forms.Label lblUseProxy;
+        private System.Windows.Forms.Button btnProxy;
     }
 }
 

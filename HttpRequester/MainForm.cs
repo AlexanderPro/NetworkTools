@@ -15,45 +15,34 @@ namespace HttpRequester
     public partial class MainForm : Form
     {
         private Stopwatch _requestTimespanMeter;
-        private delegate void SendHttpRequestDelegate(String url,
-                                                      String method,
-                                                      Encoding encoding,
-                                                      Int32 timeout,
-                                                      IDictionary<String, String> headers,
-                                                      Boolean sendRequestContent,
-                                                      String requestContent,
-                                                      out String responseContent);
+        private String _proxyAddress;
+        private String _proxyLogin;
+        private String _proxyPassword;
+        private String _proxyDomain;
+        private Boolean _useProxyDefaults;
+        private delegate void SendHttpRequestDelegate(String url, String method, Encoding encoding, Int32 timeout, IDictionary<String, String> headers, Boolean sendRequestContent, String requestContent, Boolean useProxy, out String responseContent);
 
         public MainForm()
         {
             InitializeComponent();
+            InitializeControls();
+        }
+
+        private void InitializeControls()
+        {
             _requestTimespanMeter = new Stopwatch();
-        }
+            _proxyAddress = String.Empty;
+            _proxyLogin = String.Empty;
+            _proxyPassword = String.Empty;
+            _proxyDomain = String.Empty;
+            _useProxyDefaults = false;
 
-        private void GridCellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                ((DataGridView)sender).Rows.RemoveAt(e.RowIndex);
-            }
-        }
-
-        private void GridCellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var grid = (DataGridView)sender;
-            if (grid.SelectedRows.Count > 0)
-            {
-                var row = grid.SelectedRows[0];
-                var form = new HttpHeaderForm((String)row.Cells[1].Value, (String)row.Cells[2].Value);
-                var result = form.ShowDialog();
-                if (result != DialogResult.OK) return;
-                row.Cells[1].Value = form.HeaderName;
-                row.Cells[2].Value = form.HeaderValue;
-            }
-            else
-            {
-                MessageBox.Show("You should select an item in the http headers list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            cmbUseProxy.Items.Clear();
+            cmbUseProxy.DisplayMember = "Key";
+            cmbUseProxy.ValueMember = "Value";
+            cmbUseProxy.Items.Add(new KeyValuePair<String, Boolean>("Yes", true));
+            cmbUseProxy.Items.Add(new KeyValuePair<String, Boolean>("No", false));
+            cmbUseProxy.SelectedIndex = 1;
         }
 
         private void ButtonAddHeaderClick(object sender, EventArgs e)
@@ -106,6 +95,7 @@ namespace HttpRequester
             method = txtMethod.Text;
             var requestContent = txtRequest.Text;
             var sendRequestContent = !String.IsNullOrEmpty(requestContent);
+            var useProxy = cmbUseProxy.SelectedIndex == 0;
             var headers = new Dictionary<String, String>();
             foreach (DataGridViewRow row in gridHeaders.Rows)
             {
@@ -122,7 +112,7 @@ namespace HttpRequester
             String responseContent;
             var sendHttpRequestMethod = new SendHttpRequestDelegate(SendHttpRequest);
             _requestTimespanMeter.Restart();
-            sendHttpRequestMethod.BeginInvoke(url, method, encoding, timeout, headers, sendRequestContent, requestContent, out responseContent, SendHttpRequestCallback, sendHttpRequestMethod);
+            sendHttpRequestMethod.BeginInvoke(url, method, encoding, timeout, headers, sendRequestContent, requestContent, useProxy, out responseContent, SendHttpRequestCallback, sendHttpRequestMethod);
             btnSend.Enabled = false;
         }
 
@@ -135,7 +125,54 @@ namespace HttpRequester
             textBox.Clear();
         }
 
-        private void SendHttpRequest(String url, String method, Encoding encoding, Int32 timeout, IDictionary<String, String> headers, Boolean sendRequestContent, String requestContent, out String responseContent)
+        private void ButtonProxyClick(object sender, EventArgs e)
+        {
+            var form = new WebProxyForm(_proxyAddress, _proxyLogin, _proxyPassword, _proxyDomain, _useProxyDefaults);
+            var result = form.ShowDialog();
+            if (result != DialogResult.OK) return;
+            _proxyAddress = form.Address;
+            _proxyLogin = form.Login;
+            _proxyPassword = form.Password;
+            _proxyDomain = form.Domain;
+            _useProxyDefaults = form.UseDefaults;
+        }
+
+        private void GridCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                ((DataGridView)sender).Rows.RemoveAt(e.RowIndex);
+            }
+        }
+
+        private void GridCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if (grid.SelectedRows.Count > 0)
+            {
+                var row = grid.SelectedRows[0];
+                var form = new HttpHeaderForm((String)row.Cells[1].Value, (String)row.Cells[2].Value);
+                var result = form.ShowDialog();
+                if (result != DialogResult.OK) return;
+                row.Cells[1].Value = form.HeaderName;
+                row.Cells[2].Value = form.HeaderValue;
+            }
+            else
+            {
+                MessageBox.Show("You should select an item in the http headers list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ComboBoxChanged(object sender, EventArgs e)
+        {
+            var comboBox = (ComboBox)sender;
+            var buttonId = (String)comboBox.Tag;
+            var controls = Controls.Find(buttonId, true);
+            var button = (Button)controls[0];
+            button.Enabled = comboBox.SelectedIndex == 0;
+        }
+
+        private void SendHttpRequest(String url, String method, Encoding encoding, Int32 timeout, IDictionary<String, String> headers, Boolean sendRequestContent, String requestContent, Boolean useProxy, out String responseContent)
         {
             var webRequest = (HttpWebRequest)WebRequest.Create(url);
             webRequest.Method = method;
@@ -163,6 +200,20 @@ namespace HttpRequester
                         {
                             webRequest.Headers[headerName] = headerValue;
                         } break;
+                }
+            }
+
+            if (useProxy)
+            {
+                if (_useProxyDefaults)
+                {
+                    webRequest.Proxy = WebRequest.GetSystemWebProxy();
+                    webRequest.Proxy.Credentials = CredentialCache.DefaultCredentials;
+                }
+                else
+                {
+                    webRequest.Proxy = new WebProxy(_proxyAddress);
+                    webRequest.Proxy.Credentials = new NetworkCredential(_proxyLogin, _proxyPassword, _proxyDomain);
                 }
             }
 
@@ -204,4 +255,4 @@ namespace HttpRequester
             }));
         }
     }
-}
+} 
