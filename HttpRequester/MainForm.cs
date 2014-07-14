@@ -37,17 +37,17 @@ namespace HttpRequester
             clmnHeaderValue.Width = (gridHeaders.ClientSize.Width - clmnButton.Width) / 2;
         }
 
-        private void ButtonAddHeaderClick(object sender, EventArgs e)
-        {
-            gridHeaders.Rows.Add();
-        }
-
         private void GridCellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
                 ((DataGridView)sender).Rows.RemoveAt(e.RowIndex);
             }
+        }
+
+        private void ButtonAddHeaderClick(object sender, EventArgs e)
+        {
+            gridHeaders.Rows.Add();
         }
 
         private void ButtonSendClick(object sender, EventArgs e)
@@ -78,6 +78,15 @@ namespace HttpRequester
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ButtonClearClick(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var textBoxId = (String)button.Tag;
+            var controls = Controls.Find(textBoxId, true);
+            var textBox = (TextBox)controls[0];
+            textBox.Clear();
         }
 
         private void SendHttpRequest(String url, String method, Encoding encoding, Int32 timeout, IDictionary<String, String> headers, Boolean sendRequestContent, String requestContent, out String responseContent)

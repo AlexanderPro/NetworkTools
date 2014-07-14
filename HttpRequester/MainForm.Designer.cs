@@ -132,6 +132,7 @@
             this.gridHeaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridHeaders.Size = new System.Drawing.Size(346, 113);
             this.gridHeaders.TabIndex = 0;
+            this.gridHeaders.TabStop = false;
             this.gridHeaders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellClick);
             // 
             // lblHeaders
@@ -292,8 +293,10 @@
             this.btnClearRequestContent.Name = "btnClearRequestContent";
             this.btnClearRequestContent.Size = new System.Drawing.Size(41, 23);
             this.btnClearRequestContent.TabIndex = 13;
+            this.btnClearRequestContent.Tag = "txtRequest";
             this.btnClearRequestContent.Text = "Clear";
             this.btnClearRequestContent.UseVisualStyleBackColor = true;
+            this.btnClearRequestContent.Click += new System.EventHandler(this.ButtonClearClick);
             // 
             // btnClearResponseContent
             // 
@@ -302,8 +305,10 @@
             this.btnClearResponseContent.Name = "btnClearResponseContent";
             this.btnClearResponseContent.Size = new System.Drawing.Size(41, 23);
             this.btnClearResponseContent.TabIndex = 16;
+            this.btnClearResponseContent.Tag = "txtResponse";
             this.btnClearResponseContent.Text = "Clear";
             this.btnClearResponseContent.UseVisualStyleBackColor = true;
+            this.btnClearResponseContent.Click += new System.EventHandler(this.ButtonClearClick);
             // 
             // MainForm
             // 
