@@ -15,13 +15,13 @@ namespace HttpRequester
     public partial class MainForm : Form
     {
         private Stopwatch _requestTimespanMeter;
-        private delegate void SendHttpRequestDelegate(String url, 
-                                                      String method, 
-                                                      Encoding encoding, 
-                                                      Int32 timeout, 
-                                                      IDictionary<String, String> headers, 
+        private delegate void SendHttpRequestDelegate(String url,
+                                                      String method,
+                                                      Encoding encoding,
+                                                      Int32 timeout,
+                                                      IDictionary<String, String> headers,
                                                       Boolean sendRequestContent,
-                                                      String requestContent, 
+                                                      String requestContent,
                                                       out String responseContent);
 
         public MainForm()
@@ -52,32 +52,61 @@ namespace HttpRequester
 
         private void ButtonSendClick(object sender, EventArgs e)
         {
+            String url, method;
+            Uri urlAddress;
+            Encoding encoding;
+            Int32 timeout;
+
+            if (String.IsNullOrWhiteSpace(txtUrl.Text) || !Uri.TryCreate(txtUrl.Text, UriKind.RelativeOrAbsolute, out urlAddress))
+            {
+                MessageBox.Show("Field \"URL\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (String.IsNullOrWhiteSpace(txtMethod.Text))
+            {
+                MessageBox.Show("Field \"Method\" must not be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
-                var url = txtUrl.Text;
-                var method = txtMethod.Text;
-                var encoding = Encoding.GetEncoding(txtEncoding.Text);
-                var timeout = Int32.Parse(txtTimeout.Text);
-                var requestContent = txtRequest.Text;
-                var sendRequestContent = chkSendRequestContent.Checked;
-                var headers = new Dictionary<String, String>();
-                foreach (DataGridViewRow row in gridHeaders.Rows)
-                {
-                    var headerName = (String)row.Cells[1].Value ?? "";
-                    var headerValue = (String)row.Cells[2].Value ?? "";
-                    headers.Add(headerName, headerValue);
-                }
-                txtResponse.Text = "";
-                String responseContent;
-                var sendHttpRequestMethod = new SendHttpRequestDelegate(SendHttpRequest);
-                _requestTimespanMeter.Restart();
-                sendHttpRequestMethod.BeginInvoke(url, method, encoding, timeout, headers, sendRequestContent, requestContent, out responseContent, SendHttpRequestCallback, sendHttpRequestMethod);
-                btnSend.Enabled = false;
+                encoding = Encoding.GetEncoding(txtEncoding.Text);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"Encoding\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            if (!Int32.TryParse(txtTimeout.Text, out timeout))
+            {
+                MessageBox.Show("Field \"Timeout\" must have an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            url = txtUrl.Text;
+            method = txtMethod.Text;
+            var requestContent = txtRequest.Text;
+            var sendRequestContent = chkSendRequestContent.Checked;
+            var headers = new Dictionary<String, String>();
+            foreach (DataGridViewRow row in gridHeaders.Rows)
+            {
+                var headerName = (String)row.Cells[1].Value ?? "";
+                var headerValue = (String)row.Cells[2].Value ?? "";
+                headers.Add(headerName, headerValue);
+                if (String.IsNullOrWhiteSpace(headerName))
+                {
+                    MessageBox.Show("Header name must not be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            txtResponse.Text = "";
+            String responseContent;
+            var sendHttpRequestMethod = new SendHttpRequestDelegate(SendHttpRequest);
+            _requestTimespanMeter.Restart();
+            sendHttpRequestMethod.BeginInvoke(url, method, encoding, timeout, headers, sendRequestContent, requestContent, out responseContent, SendHttpRequestCallback, sendHttpRequestMethod);
+            btnSend.Enabled = false;
         }
 
         private void ButtonClearClick(object sender, EventArgs e)
@@ -153,7 +182,7 @@ namespace HttpRequester
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }));
         }

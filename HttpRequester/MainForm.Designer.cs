@@ -254,7 +254,7 @@
             // 
             this.chkSendRequestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkSendRequestContent.AutoSize = true;
-            this.chkSendRequestContent.Location = new System.Drawing.Point(16, 556);
+            this.chkSendRequestContent.Location = new System.Drawing.Point(12, 556);
             this.chkSendRequestContent.Name = "chkSendRequestContent";
             this.chkSendRequestContent.Size = new System.Drawing.Size(134, 17);
             this.chkSendRequestContent.TabIndex = 12;
