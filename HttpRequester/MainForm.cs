@@ -247,6 +247,8 @@ namespace HttpRequester
                     sendHttpRequestMethod.EndInvoke(out responseContent, ar);
                     lblInterval.Text = String.Format("Interval: {0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
                     txtResponse.Text = responseContent;
+                    txtResponse.Select(txtResponse.Text.Length - 2, 1);
+                    txtResponse.ScrollToCaret();
                 }
                 catch (Exception ex)
                 {
