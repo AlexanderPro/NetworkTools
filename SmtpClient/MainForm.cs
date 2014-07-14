@@ -17,7 +17,7 @@ namespace SmtpClient
             InitializeComponent();
         }
 
-        private void SendMailClick(object sender, EventArgs e)
+        private void ButtonSendMailClick(object sender, EventArgs e)
         {
             var serverName = txtServerName.Text;
             var userName = txtUserName.Text;
