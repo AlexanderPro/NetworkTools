@@ -30,13 +30,6 @@ namespace HttpRequester
             _requestTimespanMeter = new Stopwatch();
         }
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            clmnHeaderName.Width = (gridHeaders.ClientSize.Width - clmnButton.Width) / 2;
-            clmnHeaderValue.Width = (gridHeaders.ClientSize.Width - clmnButton.Width) / 2;
-        }
-
         private void GridCellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
@@ -45,9 +38,33 @@ namespace HttpRequester
             }
         }
 
+        private void GridCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if (grid.SelectedRows.Count > 0)
+            {
+                var row = grid.SelectedRows[0];
+                var form = new HttpHeaderForm((String)row.Cells[1].Value, (String)row.Cells[2].Value);
+                var result = form.ShowDialog();
+                if (result != DialogResult.OK) return;
+                row.Cells[1].Value = form.HeaderName;
+                row.Cells[2].Value = form.HeaderValue;
+            }
+            else
+            {
+                MessageBox.Show("You should select an item in the http headers list.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void ButtonAddHeaderClick(object sender, EventArgs e)
         {
-            gridHeaders.Rows.Add();
+            var form = new HttpHeaderForm();
+            var result = form.ShowDialog();
+            if (result != DialogResult.OK) return;
+            var index = gridHeaders.Rows.Add();
+            var row = gridHeaders.Rows[index];
+            row.Cells[1].Value = form.HeaderName;
+            row.Cells[2].Value = form.HeaderValue;
         }
 
         private void ButtonSendClick(object sender, EventArgs e)

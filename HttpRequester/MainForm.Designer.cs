@@ -36,6 +36,9 @@
             this.lblTimeout = new System.Windows.Forms.Label();
             this.txtTimeout = new System.Windows.Forms.TextBox();
             this.gridHeaders = new System.Windows.Forms.DataGridView();
+            this.clmnButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmnHeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnHeaderValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblHeaders = new System.Windows.Forms.Label();
             this.txtRequest = new System.Windows.Forms.TextBox();
             this.lblRequest = new System.Windows.Forms.Label();
@@ -49,9 +52,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.lblInterval = new System.Windows.Forms.ToolStripStatusLabel();
             this.chkSendRequestContent = new System.Windows.Forms.CheckBox();
-            this.clmnButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.clmnHeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnHeaderValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClearRequestContent = new System.Windows.Forms.Button();
             this.btnClearResponseContent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
@@ -122,18 +122,44 @@
             this.clmnHeaderName,
             this.clmnHeaderValue});
             this.gridHeaders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridHeaders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.gridHeaders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gridHeaders.GridColor = System.Drawing.SystemColors.Control;
             this.gridHeaders.Location = new System.Drawing.Point(1, 1);
             this.gridHeaders.MultiSelect = false;
             this.gridHeaders.Name = "gridHeaders";
             this.gridHeaders.RowHeadersVisible = false;
             this.gridHeaders.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.gridHeaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.gridHeaders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridHeaders.Size = new System.Drawing.Size(349, 113);
             this.gridHeaders.TabIndex = 0;
             this.gridHeaders.TabStop = false;
             this.gridHeaders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellClick);
+            this.gridHeaders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellDoubleClick);
+            // 
+            // clmnButton
+            // 
+            this.clmnButton.HeaderText = "";
+            this.clmnButton.MinimumWidth = 30;
+            this.clmnButton.Name = "clmnButton";
+            this.clmnButton.Text = "-";
+            this.clmnButton.UseColumnTextForButtonValue = true;
+            this.clmnButton.Width = 30;
+            // 
+            // clmnHeaderName
+            // 
+            this.clmnHeaderName.HeaderText = "Header Name";
+            this.clmnHeaderName.MinimumWidth = 160;
+            this.clmnHeaderName.Name = "clmnHeaderName";
+            this.clmnHeaderName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmnHeaderName.Width = 160;
+            // 
+            // clmnHeaderValue
+            // 
+            this.clmnHeaderValue.HeaderText = "Header Value";
+            this.clmnHeaderValue.MinimumWidth = 160;
+            this.clmnHeaderValue.Name = "clmnHeaderValue";
+            this.clmnHeaderValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmnHeaderValue.Width = 160;
             // 
             // lblHeaders
             // 
@@ -260,31 +286,6 @@
             this.chkSendRequestContent.TabIndex = 12;
             this.chkSendRequestContent.Text = "Send Request Content";
             this.chkSendRequestContent.UseVisualStyleBackColor = true;
-            // 
-            // clmnButton
-            // 
-            this.clmnButton.HeaderText = "";
-            this.clmnButton.MinimumWidth = 30;
-            this.clmnButton.Name = "clmnButton";
-            this.clmnButton.Text = "-";
-            this.clmnButton.UseColumnTextForButtonValue = true;
-            this.clmnButton.Width = 30;
-            // 
-            // clmnHeaderName
-            // 
-            this.clmnHeaderName.HeaderText = "Header Name";
-            this.clmnHeaderName.MinimumWidth = 160;
-            this.clmnHeaderName.Name = "clmnHeaderName";
-            this.clmnHeaderName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnHeaderName.Width = 160;
-            // 
-            // clmnHeaderValue
-            // 
-            this.clmnHeaderValue.HeaderText = "Header Value";
-            this.clmnHeaderValue.MinimumWidth = 160;
-            this.clmnHeaderValue.Name = "clmnHeaderValue";
-            this.clmnHeaderValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnHeaderValue.Width = 160;
             // 
             // btnClearRequestContent
             // 
