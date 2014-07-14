@@ -35,7 +35,7 @@ namespace SmtpClient
             Int32 serverPort;
             if (!Int32.TryParse(txtServerPort.Text, out serverPort))
             {
-                MessageBox.Show("Field \"Server Port\" must have an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"Server Port\" must have an integer number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -46,7 +46,7 @@ namespace SmtpClient
             }
             catch
             {
-                MessageBox.Show("Field \"Subject Encoding\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"Subject Encoding\" has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -57,7 +57,7 @@ namespace SmtpClient
             }
             catch
             {
-                MessageBox.Show("Field \"Body Encoding\" has a wrong format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Field \"Body Encoding\" has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
