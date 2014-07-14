@@ -82,13 +82,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServerName.Location = new System.Drawing.Point(114, 30);
             this.txtServerName.Name = "txtServerName";
-            this.txtServerName.Size = new System.Drawing.Size(405, 20);
+            this.txtServerName.Size = new System.Drawing.Size(214, 20);
             this.txtServerName.TabIndex = 1;
             // 
             // gbSmtpServer
             // 
-            this.gbSmtpServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbSmtpServer.Controls.Add(this.lblUseSsl);
             this.gbSmtpServer.Controls.Add(this.chbUseSsl);
             this.gbSmtpServer.Controls.Add(this.txtPassword);
@@ -101,7 +99,7 @@
             this.gbSmtpServer.Controls.Add(this.lblServerName);
             this.gbSmtpServer.Location = new System.Drawing.Point(12, 6);
             this.gbSmtpServer.Name = "gbSmtpServer";
-            this.gbSmtpServer.Size = new System.Drawing.Size(542, 181);
+            this.gbSmtpServer.Size = new System.Drawing.Size(351, 190);
             this.gbSmtpServer.TabIndex = 0;
             this.gbSmtpServer.TabStop = false;
             this.gbSmtpServer.Text = "SMTP Server";
@@ -131,7 +129,7 @@
             this.txtPassword.Location = new System.Drawing.Point(114, 120);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(405, 20);
+            this.txtPassword.Size = new System.Drawing.Size(214, 20);
             this.txtPassword.TabIndex = 7;
             // 
             // lblPassword
@@ -149,7 +147,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUserName.Location = new System.Drawing.Point(114, 90);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(405, 20);
+            this.txtUserName.Size = new System.Drawing.Size(214, 20);
             this.txtUserName.TabIndex = 5;
             // 
             // lblUserName
@@ -167,7 +165,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServerPort.Location = new System.Drawing.Point(114, 60);
             this.txtServerPort.Name = "txtServerPort";
-            this.txtServerPort.Size = new System.Drawing.Size(405, 20);
+            this.txtServerPort.Size = new System.Drawing.Size(214, 20);
             this.txtServerPort.TabIndex = 3;
             // 
             // lblServerPort
@@ -181,8 +179,6 @@
             // 
             // gbAddress
             // 
-            this.gbAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbAddress.Controls.Add(this.txtBcc);
             this.gbAddress.Controls.Add(this.lblBcc);
             this.gbAddress.Controls.Add(this.txtCc);
@@ -193,9 +189,9 @@
             this.gbAddress.Controls.Add(this.lblFrom);
             this.gbAddress.Controls.Add(this.txtSenderName);
             this.gbAddress.Controls.Add(this.lblSenderName);
-            this.gbAddress.Location = new System.Drawing.Point(12, 193);
+            this.gbAddress.Location = new System.Drawing.Point(375, 6);
             this.gbAddress.Name = "gbAddress";
-            this.gbAddress.Size = new System.Drawing.Size(542, 190);
+            this.gbAddress.Size = new System.Drawing.Size(351, 190);
             this.gbAddress.TabIndex = 1;
             this.gbAddress.TabStop = false;
             this.gbAddress.Text = "Address";
@@ -206,7 +202,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBcc.Location = new System.Drawing.Point(114, 150);
             this.txtBcc.Name = "txtBcc";
-            this.txtBcc.Size = new System.Drawing.Size(405, 20);
+            this.txtBcc.Size = new System.Drawing.Size(214, 20);
             this.txtBcc.TabIndex = 9;
             // 
             // lblBcc
@@ -224,7 +220,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCc.Location = new System.Drawing.Point(114, 120);
             this.txtCc.Name = "txtCc";
-            this.txtCc.Size = new System.Drawing.Size(405, 20);
+            this.txtCc.Size = new System.Drawing.Size(214, 20);
             this.txtCc.TabIndex = 7;
             // 
             // lblCc
@@ -242,7 +238,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTo.Location = new System.Drawing.Point(114, 90);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(405, 20);
+            this.txtTo.Size = new System.Drawing.Size(214, 20);
             this.txtTo.TabIndex = 5;
             // 
             // lblTo
@@ -260,7 +256,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFrom.Location = new System.Drawing.Point(114, 60);
             this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(405, 20);
+            this.txtFrom.Size = new System.Drawing.Size(214, 20);
             this.txtFrom.TabIndex = 3;
             // 
             // lblFrom
@@ -278,7 +274,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSenderName.Location = new System.Drawing.Point(114, 30);
             this.txtSenderName.Name = "txtSenderName";
-            this.txtSenderName.Size = new System.Drawing.Size(405, 20);
+            this.txtSenderName.Size = new System.Drawing.Size(214, 20);
             this.txtSenderName.TabIndex = 1;
             // 
             // lblSenderName
@@ -305,9 +301,9 @@
             this.gbMail.Controls.Add(this.lblSubjectEncoding);
             this.gbMail.Controls.Add(this.txtSubject);
             this.gbMail.Controls.Add(this.lblSubject);
-            this.gbMail.Location = new System.Drawing.Point(12, 391);
+            this.gbMail.Location = new System.Drawing.Point(12, 202);
             this.gbMail.Name = "gbMail";
-            this.gbMail.Size = new System.Drawing.Size(542, 272);
+            this.gbMail.Size = new System.Drawing.Size(714, 329);
             this.gbMail.TabIndex = 2;
             this.gbMail.TabStop = false;
             this.gbMail.Text = "Mail";
@@ -315,7 +311,7 @@
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(408, 230);
+            this.btnSend.Location = new System.Drawing.Point(580, 287);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(111, 31);
             this.btnSend.TabIndex = 9;
@@ -327,7 +323,7 @@
             // 
             this.chbHtml.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chbHtml.AutoSize = true;
-            this.chbHtml.Location = new System.Drawing.Point(470, 125);
+            this.chbHtml.Location = new System.Drawing.Point(642, 125);
             this.chbHtml.Name = "chbHtml";
             this.chbHtml.Size = new System.Drawing.Size(56, 17);
             this.chbHtml.TabIndex = 7;
@@ -343,7 +339,7 @@
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBody.Size = new System.Drawing.Size(502, 78);
+            this.txtBody.Size = new System.Drawing.Size(674, 135);
             this.txtBody.TabIndex = 8;
             // 
             // lblBody
@@ -357,12 +353,9 @@
             // 
             // txtBodyEncoding
             // 
-            this.txtBodyEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBodyEncoding.Location = new System.Drawing.Point(114, 90);
             this.txtBodyEncoding.Name = "txtBodyEncoding";
-            this.txtBodyEncoding.Size = new System.Drawing.Size(405, 20);
+            this.txtBodyEncoding.Size = new System.Drawing.Size(214, 20);
             this.txtBodyEncoding.TabIndex = 5;
             // 
             // lblBodyEncoding
@@ -376,12 +369,9 @@
             // 
             // txtSubjectEncoding
             // 
-            this.txtSubjectEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubjectEncoding.Location = new System.Drawing.Point(114, 60);
             this.txtSubjectEncoding.Name = "txtSubjectEncoding";
-            this.txtSubjectEncoding.Size = new System.Drawing.Size(405, 20);
+            this.txtSubjectEncoding.Size = new System.Drawing.Size(214, 20);
             this.txtSubjectEncoding.TabIndex = 3;
             // 
             // lblSubjectEncoding
@@ -395,12 +385,9 @@
             // 
             // txtSubject
             // 
-            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubject.Location = new System.Drawing.Point(114, 30);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(405, 20);
+            this.txtSubject.Size = new System.Drawing.Size(214, 20);
             this.txtSubject.TabIndex = 1;
             // 
             // lblSubject
@@ -416,7 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 677);
+            this.ClientSize = new System.Drawing.Size(738, 544);
             this.Controls.Add(this.gbMail);
             this.Controls.Add(this.gbAddress);
             this.Controls.Add(this.gbSmtpServer);
