@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientCertificateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientCertificateForm.Designer.cs">
+      <DependentUpon>ClientCertificateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HttpHeaderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="WebProxyForm.Designer.cs">
       <DependentUpon>WebProxyForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ClientCertificateForm.resx">
+      <DependentUpon>ClientCertificateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HttpHeaderForm.resx">
       <DependentUpon>HttpHeaderForm.cs</DependentUpon>
     </EmbeddedResource>

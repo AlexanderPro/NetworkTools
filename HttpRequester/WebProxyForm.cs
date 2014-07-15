@@ -53,11 +53,6 @@ namespace HttpRequester
             }
         }
 
-        public WebProxyForm()
-        {
-            InitializeComponent();
-        }
-
         public WebProxyForm(String address, String login, String password, String domain, Boolean useDefaults)
         {
             InitializeComponent();
@@ -66,6 +61,7 @@ namespace HttpRequester
             txtPassword.Text = password;
             txtDomain.Text = domain;
             chbUseDefaults.Checked = useDefaults;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void ButtonOkClick(object sender, EventArgs e)
@@ -73,7 +69,7 @@ namespace HttpRequester
             if (!chbUseDefaults.Checked)
             {
                 Uri address;
-                if (!Uri.TryCreate(txtAddress.Text, UriKind.Absolute, out address))
+                if (!Uri.TryCreate(txtAddress.Text, UriKind.RelativeOrAbsolute, out address))
                 {
                     MessageBox.Show("Field \"Address\" has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;

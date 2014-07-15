@@ -9,18 +9,57 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace HttpRequester
 {
     public partial class MainForm : Form
     {
+        private class HttpRequestData
+        {
+            public String Url { get; set; }
+            public String Method { get; set; }
+            public Encoding Encoding { get; set; }
+            public Int32 Timeout { get; set; }
+            public IDictionary<String, String> Headers { get; set; }
+            public String RequestContent { get; set; }
+            public String ResponseContent { get; set; }
+            public Boolean UseProxy { get; set; }
+            public String ProxyAddress { get; set; }
+            public String ProxyLogin { get; set; }
+            public String ProxyPassword { get; set; }
+            public String ProxyDomain { get; set; }
+            public Boolean UseProxyDefaults { get; set; }
+            public Boolean UseClientCertificate { get; set; }
+            public String CertificateFileName { get; set; }
+            public String CertificatePassword { get; set; }
+            public X509Certificate2 Certificate { get; set; }
+
+            public HttpRequestData()
+            {
+                Url = String.Empty;
+                Method = String.Empty;
+                Encoding = Encoding.UTF8;
+                Timeout = -1;
+                Headers = new Dictionary<String, String>();
+                RequestContent = String.Empty;
+                ResponseContent = String.Empty;
+                UseProxy = false;
+                ProxyAddress = String.Empty;
+                ProxyLogin = String.Empty;
+                ProxyPassword = String.Empty;
+                ProxyDomain = String.Empty;
+                UseProxyDefaults = false;
+                UseClientCertificate = false;
+                CertificateFileName = String.Empty;
+                CertificatePassword = String.Empty;
+                Certificate = null;
+            }
+        }
+
+        private HttpRequestData _requestData;
         private Stopwatch _requestTimespanMeter;
-        private String _proxyAddress;
-        private String _proxyLogin;
-        private String _proxyPassword;
-        private String _proxyDomain;
-        private Boolean _useProxyDefaults;
-        private delegate void SendHttpRequestDelegate(String url, String method, Encoding encoding, Int32 timeout, IDictionary<String, String> headers, Boolean sendRequestContent, String requestContent, Boolean useProxy, out String responseContent);
+        private delegate void SendHttpRequestDelegate();
 
         public MainForm()
         {
@@ -31,11 +70,7 @@ namespace HttpRequester
         private void InitializeControls()
         {
             _requestTimespanMeter = new Stopwatch();
-            _proxyAddress = String.Empty;
-            _proxyLogin = String.Empty;
-            _proxyPassword = String.Empty;
-            _proxyDomain = String.Empty;
-            _useProxyDefaults = false;
+            _requestData = new HttpRequestData();
 
             cmbUseProxy.Items.Clear();
             cmbUseProxy.DisplayMember = "Key";
@@ -43,6 +78,13 @@ namespace HttpRequester
             cmbUseProxy.Items.Add(new KeyValuePair<String, Boolean>("Yes", true));
             cmbUseProxy.Items.Add(new KeyValuePair<String, Boolean>("No", false));
             cmbUseProxy.SelectedIndex = 1;
+
+            cmbUseClientCertificate.Items.Clear();
+            cmbUseClientCertificate.DisplayMember = "Key";
+            cmbUseClientCertificate.ValueMember = "Value";
+            cmbUseClientCertificate.Items.Add(new KeyValuePair<String, Boolean>("Yes", true));
+            cmbUseClientCertificate.Items.Add(new KeyValuePair<String, Boolean>("No", false));
+            cmbUseClientCertificate.SelectedIndex = 1;
         }
 
         private void ButtonAddHeaderClick(object sender, EventArgs e)
@@ -58,7 +100,6 @@ namespace HttpRequester
 
         private void ButtonSendClick(object sender, EventArgs e)
         {
-            String url, method;
             Uri urlAddress;
             Encoding encoding;
             Int32 timeout;
@@ -91,28 +132,31 @@ namespace HttpRequester
                 return;
             }
 
-            url = txtUrl.Text;
-            method = txtMethod.Text;
-            var requestContent = txtRequest.Text;
-            var sendRequestContent = !String.IsNullOrEmpty(requestContent);
-            var useProxy = cmbUseProxy.SelectedIndex == 0;
-            var headers = new Dictionary<String, String>();
+            _requestData.Url = txtUrl.Text;
+            _requestData.Method = txtMethod.Text;
+            _requestData.RequestContent = txtRequest.Text;
+            _requestData.Encoding = encoding;
+            _requestData.Timeout = timeout;
+            _requestData.UseProxy = cmbUseProxy.SelectedIndex == 0;
+            _requestData.UseClientCertificate = cmbUseClientCertificate.SelectedIndex == 0;
+            _requestData.ResponseContent = String.Empty;
+            _requestData.Headers.Clear();
             foreach (DataGridViewRow row in gridHeaders.Rows)
             {
                 var headerName = (String)row.Cells[1].Value ?? "";
                 var headerValue = (String)row.Cells[2].Value ?? "";
-                headers.Add(headerName, headerValue);
+                _requestData.Headers.Add(headerName, headerValue);
                 if (String.IsNullOrWhiteSpace(headerName))
                 {
                     MessageBox.Show("Header name must not be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
+
             txtResponse.Text = "";
-            String responseContent;
             var sendHttpRequestMethod = new SendHttpRequestDelegate(SendHttpRequest);
             _requestTimespanMeter.Restart();
-            sendHttpRequestMethod.BeginInvoke(url, method, encoding, timeout, headers, sendRequestContent, requestContent, useProxy, out responseContent, SendHttpRequestCallback, sendHttpRequestMethod);
+            sendHttpRequestMethod.BeginInvoke(SendHttpRequestCallback, sendHttpRequestMethod);
             btnSend.Enabled = false;
         }
 
@@ -127,14 +171,28 @@ namespace HttpRequester
 
         private void ButtonProxyClick(object sender, EventArgs e)
         {
-            var form = new WebProxyForm(_proxyAddress, _proxyLogin, _proxyPassword, _proxyDomain, _useProxyDefaults);
+            var form = new WebProxyForm(_requestData.ProxyAddress, _requestData.ProxyLogin, _requestData.ProxyPassword, _requestData.ProxyDomain, _requestData.UseProxyDefaults);
             var result = form.ShowDialog();
-            if (result != DialogResult.OK) return;
-            _proxyAddress = form.Address;
-            _proxyLogin = form.Login;
-            _proxyPassword = form.Password;
-            _proxyDomain = form.Domain;
-            _useProxyDefaults = form.UseDefaults;
+            if (result == DialogResult.OK)
+            {
+                _requestData.ProxyAddress = form.Address;
+                _requestData.ProxyLogin = form.Login;
+                _requestData.ProxyPassword = form.Password;
+                _requestData.ProxyDomain = form.Domain;
+                _requestData.UseProxyDefaults = form.UseDefaults;
+            }
+        }
+
+        private void ButtonClientCertificateClick(object sender, EventArgs e)
+        {
+            var form = new ClientCertificateForm(_requestData.CertificateFileName, _requestData.CertificatePassword);
+            var result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                _requestData.CertificateFileName = form.FileName;
+                _requestData.CertificatePassword = form.Password;
+                _requestData.Certificate = form.Certificate;
+            }
         }
 
         private void GridCellClick(object sender, DataGridViewCellEventArgs e)
@@ -153,9 +211,11 @@ namespace HttpRequester
                 var row = grid.SelectedRows[0];
                 var form = new HttpHeaderForm((String)row.Cells[1].Value, (String)row.Cells[2].Value);
                 var result = form.ShowDialog();
-                if (result != DialogResult.OK) return;
-                row.Cells[1].Value = form.HeaderName;
-                row.Cells[2].Value = form.HeaderValue;
+                if (result == DialogResult.OK)
+                {
+                    row.Cells[1].Value = form.HeaderName;
+                    row.Cells[2].Value = form.HeaderValue;
+                }
             }
             else
             {
@@ -172,15 +232,22 @@ namespace HttpRequester
             button.Enabled = comboBox.SelectedIndex == 0;
         }
 
-        private void SendHttpRequest(String url, String method, Encoding encoding, Int32 timeout, IDictionary<String, String> headers, Boolean sendRequestContent, String requestContent, Boolean useProxy, out String responseContent)
+        private void WriteToTextBox(TextBox textBox, String text)
         {
-            var webRequest = (HttpWebRequest)WebRequest.Create(url);
-            webRequest.Method = method;
-            webRequest.Timeout = timeout;
-            var data = encoding.GetBytes(requestContent);
+            textBox.Text += text;
+            textBox.Select(textBox.Text.Length - 2, 1);
+            textBox.ScrollToCaret();
+        }
+
+        private void SendHttpRequest()
+        {
+            var webRequest = (HttpWebRequest)WebRequest.Create(_requestData.Url);
+            webRequest.Method = _requestData.Method;
+            webRequest.Timeout = _requestData.Timeout;
+            var data = _requestData.Encoding.GetBytes(_requestData.RequestContent);
             webRequest.ContentLength = data.Length;
 
-            foreach (var pair in headers)
+            foreach (var pair in _requestData.Headers)
             {
                 var headerName = pair.Key;
                 var headerValue = pair.Value;
@@ -203,21 +270,26 @@ namespace HttpRequester
                 }
             }
 
-            if (useProxy)
+            if (_requestData.UseProxy)
             {
-                if (_useProxyDefaults)
+                if (_requestData.UseProxyDefaults)
                 {
                     webRequest.Proxy = WebRequest.GetSystemWebProxy();
                     webRequest.Proxy.Credentials = CredentialCache.DefaultCredentials;
                 }
                 else
                 {
-                    webRequest.Proxy = new WebProxy(_proxyAddress);
-                    webRequest.Proxy.Credentials = new NetworkCredential(_proxyLogin, _proxyPassword, _proxyDomain);
+                    webRequest.Proxy = new WebProxy(_requestData.ProxyAddress);
+                    webRequest.Proxy.Credentials = new NetworkCredential(_requestData.ProxyLogin, _requestData.ProxyPassword, _requestData.ProxyDomain);
                 }
             }
 
-            if (sendRequestContent)
+            if (_requestData.UseClientCertificate)
+            {
+                webRequest.ClientCertificates.Add(_requestData.Certificate);
+            }
+
+            if (!String.IsNullOrEmpty(_requestData.RequestContent))
             {
                 using (var requestStream = webRequest.GetRequestStream())
                 {
@@ -227,9 +299,9 @@ namespace HttpRequester
 
             using (var webResponse = webRequest.GetResponse())
             using (var responseStream = webResponse.GetResponseStream())
-            using (var responseReader = new StreamReader(responseStream, encoding))
+            using (var responseReader = new StreamReader(responseStream, _requestData.Encoding))
             {
-                responseContent = responseReader.ReadToEnd();
+                _requestData.ResponseContent = responseReader.ReadToEnd();
             }
         }
 
@@ -239,16 +311,13 @@ namespace HttpRequester
             {
                 try
                 {
-                    String responseContent;
                     btnSend.Enabled = true;
                     _requestTimespanMeter.Stop();
                     var timeSpan = _requestTimespanMeter.Elapsed;
                     var sendHttpRequestMethod = (SendHttpRequestDelegate)ar.AsyncState;
-                    sendHttpRequestMethod.EndInvoke(out responseContent, ar);
+                    sendHttpRequestMethod.EndInvoke(ar);
                     lblInterval.Text = String.Format("Interval: {0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
-                    txtResponse.Text = responseContent;
-                    txtResponse.Select(txtResponse.Text.Length - 2, 1);
-                    txtResponse.ScrollToCaret();
+                    WriteToTextBox(txtResponse, _requestData.ResponseContent;
                 }
                 catch (Exception ex)
                 {
@@ -257,4 +326,4 @@ namespace HttpRequester
             }));
         }
     }
-} 
+}

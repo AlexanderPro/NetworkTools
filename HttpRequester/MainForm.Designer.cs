@@ -36,6 +36,9 @@
             this.lblTimeout = new System.Windows.Forms.Label();
             this.txtTimeout = new System.Windows.Forms.TextBox();
             this.gridHeaders = new System.Windows.Forms.DataGridView();
+            this.clmnButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmnHeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnHeaderValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblHeaders = new System.Windows.Forms.Label();
             this.txtRequest = new System.Windows.Forms.TextBox();
             this.lblRequest = new System.Windows.Forms.Label();
@@ -50,12 +53,12 @@
             this.lblInterval = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnClearRequestContent = new System.Windows.Forms.Button();
             this.btnClearResponseContent = new System.Windows.Forms.Button();
-            this.clmnButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.clmnHeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnHeaderValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbUseProxy = new System.Windows.Forms.ComboBox();
             this.lblUseProxy = new System.Windows.Forms.Label();
             this.btnProxy = new System.Windows.Forms.Button();
+            this.btnClientCertificate = new System.Windows.Forms.Button();
+            this.lblUseClientCertificate = new System.Windows.Forms.Label();
+            this.cmbUseClientCertificate = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
             this.pnlGridBorder.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -138,6 +141,31 @@
             this.gridHeaders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellClick);
             this.gridHeaders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellDoubleClick);
             // 
+            // clmnButton
+            // 
+            this.clmnButton.HeaderText = "";
+            this.clmnButton.MinimumWidth = 30;
+            this.clmnButton.Name = "clmnButton";
+            this.clmnButton.Text = "-";
+            this.clmnButton.UseColumnTextForButtonValue = true;
+            this.clmnButton.Width = 30;
+            // 
+            // clmnHeaderName
+            // 
+            this.clmnHeaderName.HeaderText = "Header Name";
+            this.clmnHeaderName.MinimumWidth = 200;
+            this.clmnHeaderName.Name = "clmnHeaderName";
+            this.clmnHeaderName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmnHeaderName.Width = 200;
+            // 
+            // clmnHeaderValue
+            // 
+            this.clmnHeaderValue.HeaderText = "Header Value";
+            this.clmnHeaderValue.MinimumWidth = 200;
+            this.clmnHeaderValue.Name = "clmnHeaderValue";
+            this.clmnHeaderValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmnHeaderValue.Width = 200;
+            // 
             // lblHeaders
             // 
             this.lblHeaders.AutoSize = true;
@@ -156,7 +184,7 @@
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRequest.Size = new System.Drawing.Size(420, 117);
-            this.txtRequest.TabIndex = 11;
+            this.txtRequest.TabIndex = 17;
             // 
             // lblRequest
             // 
@@ -164,7 +192,7 @@
             this.lblRequest.Location = new System.Drawing.Point(15, 417);
             this.lblRequest.Name = "lblRequest";
             this.lblRequest.Size = new System.Drawing.Size(89, 13);
-            this.lblRequest.TabIndex = 10;
+            this.lblRequest.TabIndex = 16;
             this.lblRequest.Text = "Request content:";
             // 
             // lblResponseContent
@@ -173,7 +201,7 @@
             this.lblResponseContent.Location = new System.Drawing.Point(447, 14);
             this.lblResponseContent.Name = "lblResponseContent";
             this.lblResponseContent.Size = new System.Drawing.Size(97, 13);
-            this.lblResponseContent.TabIndex = 14;
+            this.lblResponseContent.TabIndex = 19;
             this.lblResponseContent.Text = "Response content:";
             // 
             // txtResponse
@@ -186,7 +214,7 @@
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResponse.Size = new System.Drawing.Size(420, 520);
-            this.txtResponse.TabIndex = 15;
+            this.txtResponse.TabIndex = 20;
             // 
             // btnSend
             // 
@@ -194,7 +222,7 @@
             this.btnSend.Location = new System.Drawing.Point(747, 591);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(123, 30);
-            this.btnSend.TabIndex = 17;
+            this.btnSend.TabIndex = 22;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.ButtonSendClick);
@@ -243,7 +271,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 638);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(884, 24);
-            this.statusStrip.TabIndex = 18;
+            this.statusStrip.TabIndex = 23;
             // 
             // lblInterval
             // 
@@ -259,7 +287,7 @@
             this.btnClearRequestContent.Location = new System.Drawing.Point(391, 552);
             this.btnClearRequestContent.Name = "btnClearRequestContent";
             this.btnClearRequestContent.Size = new System.Drawing.Size(41, 23);
-            this.btnClearRequestContent.TabIndex = 13;
+            this.btnClearRequestContent.TabIndex = 18;
             this.btnClearRequestContent.Tag = "txtRequest";
             this.btnClearRequestContent.Text = "Clear";
             this.btnClearRequestContent.UseVisualStyleBackColor = true;
@@ -271,36 +299,11 @@
             this.btnClearResponseContent.Location = new System.Drawing.Point(829, 552);
             this.btnClearResponseContent.Name = "btnClearResponseContent";
             this.btnClearResponseContent.Size = new System.Drawing.Size(41, 23);
-            this.btnClearResponseContent.TabIndex = 16;
+            this.btnClearResponseContent.TabIndex = 21;
             this.btnClearResponseContent.Tag = "txtResponse";
             this.btnClearResponseContent.Text = "Clear";
             this.btnClearResponseContent.UseVisualStyleBackColor = true;
             this.btnClearResponseContent.Click += new System.EventHandler(this.ButtonClearClick);
-            // 
-            // clmnButton
-            // 
-            this.clmnButton.HeaderText = "";
-            this.clmnButton.MinimumWidth = 30;
-            this.clmnButton.Name = "clmnButton";
-            this.clmnButton.Text = "-";
-            this.clmnButton.UseColumnTextForButtonValue = true;
-            this.clmnButton.Width = 30;
-            // 
-            // clmnHeaderName
-            // 
-            this.clmnHeaderName.HeaderText = "Header Name";
-            this.clmnHeaderName.MinimumWidth = 200;
-            this.clmnHeaderName.Name = "clmnHeaderName";
-            this.clmnHeaderName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnHeaderName.Width = 200;
-            // 
-            // clmnHeaderValue
-            // 
-            this.clmnHeaderValue.HeaderText = "Header Value";
-            this.clmnHeaderValue.MinimumWidth = 200;
-            this.clmnHeaderValue.Name = "clmnHeaderValue";
-            this.clmnHeaderValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnHeaderValue.Width = 200;
             // 
             // cmbUseProxy
             // 
@@ -308,8 +311,8 @@
             this.cmbUseProxy.FormattingEnabled = true;
             this.cmbUseProxy.Location = new System.Drawing.Point(12, 316);
             this.cmbUseProxy.Name = "cmbUseProxy";
-            this.cmbUseProxy.Size = new System.Drawing.Size(121, 21);
-            this.cmbUseProxy.TabIndex = 19;
+            this.cmbUseProxy.Size = new System.Drawing.Size(92, 21);
+            this.cmbUseProxy.TabIndex = 11;
             this.cmbUseProxy.Tag = "btnProxy";
             this.cmbUseProxy.SelectedIndexChanged += new System.EventHandler(this.ComboBoxChanged);
             // 
@@ -319,25 +322,59 @@
             this.lblUseProxy.Location = new System.Drawing.Point(12, 300);
             this.lblUseProxy.Name = "lblUseProxy";
             this.lblUseProxy.Size = new System.Drawing.Size(58, 13);
-            this.lblUseProxy.TabIndex = 20;
+            this.lblUseProxy.TabIndex = 10;
             this.lblUseProxy.Text = "Use Proxy:";
             // 
             // btnProxy
             // 
             this.btnProxy.Enabled = false;
-            this.btnProxy.Location = new System.Drawing.Point(139, 315);
+            this.btnProxy.Location = new System.Drawing.Point(110, 315);
             this.btnProxy.Name = "btnProxy";
             this.btnProxy.Size = new System.Drawing.Size(74, 23);
-            this.btnProxy.TabIndex = 21;
+            this.btnProxy.TabIndex = 12;
             this.btnProxy.Text = "Proxy";
             this.btnProxy.UseVisualStyleBackColor = true;
             this.btnProxy.Click += new System.EventHandler(this.ButtonProxyClick);
+            // 
+            // btnClientCertificate
+            // 
+            this.btnClientCertificate.Enabled = false;
+            this.btnClientCertificate.Location = new System.Drawing.Point(337, 315);
+            this.btnClientCertificate.Name = "btnClientCertificate";
+            this.btnClientCertificate.Size = new System.Drawing.Size(94, 23);
+            this.btnClientCertificate.TabIndex = 15;
+            this.btnClientCertificate.Text = "Client Certificate";
+            this.btnClientCertificate.UseVisualStyleBackColor = true;
+            this.btnClientCertificate.Click += new System.EventHandler(this.ButtonClientCertificateClick);
+            // 
+            // lblUseClientCertificate
+            // 
+            this.lblUseClientCertificate.AutoSize = true;
+            this.lblUseClientCertificate.Location = new System.Drawing.Point(223, 299);
+            this.lblUseClientCertificate.Name = "lblUseClientCertificate";
+            this.lblUseClientCertificate.Size = new System.Drawing.Size(108, 13);
+            this.lblUseClientCertificate.TabIndex = 13;
+            this.lblUseClientCertificate.Text = "Use Client Certificate:";
+            // 
+            // cmbUseClientCertificate
+            // 
+            this.cmbUseClientCertificate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUseClientCertificate.FormattingEnabled = true;
+            this.cmbUseClientCertificate.Location = new System.Drawing.Point(223, 316);
+            this.cmbUseClientCertificate.Name = "cmbUseClientCertificate";
+            this.cmbUseClientCertificate.Size = new System.Drawing.Size(108, 21);
+            this.cmbUseClientCertificate.TabIndex = 14;
+            this.cmbUseClientCertificate.Tag = "btnClientCertificate";
+            this.cmbUseClientCertificate.SelectedIndexChanged += new System.EventHandler(this.ComboBoxChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 662);
+            this.Controls.Add(this.btnClientCertificate);
+            this.Controls.Add(this.lblUseClientCertificate);
+            this.Controls.Add(this.cmbUseClientCertificate);
             this.Controls.Add(this.btnProxy);
             this.Controls.Add(this.lblUseProxy);
             this.Controls.Add(this.cmbUseProxy);
@@ -402,6 +439,9 @@
         private System.Windows.Forms.ComboBox cmbUseProxy;
         private System.Windows.Forms.Label lblUseProxy;
         private System.Windows.Forms.Button btnProxy;
+        private System.Windows.Forms.Button btnClientCertificate;
+        private System.Windows.Forms.Label lblUseClientCertificate;
+        private System.Windows.Forms.ComboBox cmbUseClientCertificate;
     }
 }
 

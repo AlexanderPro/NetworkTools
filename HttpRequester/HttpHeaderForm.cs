@@ -37,6 +37,7 @@ namespace HttpRequester
             InitializeComponent();
             txtHeaderName.Text = headerName;
             txtHeaderValue.Text = headerValue;
+            DialogResult = DialogResult.Cancel;
         }
 
         protected override void OnLoad(EventArgs e)
