@@ -344,7 +344,8 @@ namespace HttpRequester
             using (var responseStream = webResponse.GetResponseStream())
             using (var responseReader = new StreamReader(responseStream, _requestData.Encoding))
             {
-                _requestData.ResponseContent = responseReader.ReadToEnd();
+                _requestData.ResponseContent = String.Concat(webResponse.Headers.AllKeys.Select(x => x + ": " + webResponse.Headers[x] + Environment.NewLine));
+                _requestData.ResponseContent += Environment.NewLine + responseReader.ReadToEnd();
             }
         }
 
