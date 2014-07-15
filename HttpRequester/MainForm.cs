@@ -98,11 +98,11 @@ namespace HttpRequester
 
         private void ButtonSendClick(object sender, EventArgs e)
         {
-            Uri urlAddress;
+            Uri address;
             Encoding encoding;
             Int32 timeout, interval = -1;
 
-            if (String.IsNullOrWhiteSpace(txtUrl.Text) || !Uri.TryCreate(txtUrl.Text, UriKind.RelativeOrAbsolute, out urlAddress))
+            if (!Uri.TryCreate(txtUrl.Text, UriKind.Absolute, out address))
             {
                 MessageBox.Show("Field \"URL\" has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -133,6 +133,18 @@ namespace HttpRequester
             if (cmbRequestInLoop.SelectedIndex == 0 && !Int32.TryParse(txtRequestInterval.Text, out interval))
             {
                 MessageBox.Show("Field \"Loop interval\" must have an integer number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbUseClientCertificate.SelectedIndex == 0 && _requestData.Certificate == null)
+            {
+                MessageBox.Show("Client certificate does not exist.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbUseProxy.SelectedIndex == 0 && !_requestData.UseProxyDefaults && !Uri.TryCreate(_requestData.ProxyAddress, UriKind.Absolute, out address))
+            {
+                MessageBox.Show("Proxy address has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

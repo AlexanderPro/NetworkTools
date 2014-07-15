@@ -69,7 +69,7 @@ namespace HttpRequester
             if (!chbUseDefaults.Checked)
             {
                 Uri address;
-                if (!Uri.TryCreate(txtAddress.Text, UriKind.RelativeOrAbsolute, out address))
+                if (!Uri.TryCreate(txtAddress.Text, UriKind.Absolute, out address))
                 {
                     MessageBox.Show("Field \"Address\" has a wrong format.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
