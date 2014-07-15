@@ -59,6 +59,9 @@
             this.btnClientCertificate = new System.Windows.Forms.Button();
             this.lblUseClientCertificate = new System.Windows.Forms.Label();
             this.cmbUseClientCertificate = new System.Windows.Forms.ComboBox();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.btnClearStatus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
             this.pnlGridBorder.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -198,10 +201,10 @@
             // lblResponseContent
             // 
             this.lblResponseContent.AutoSize = true;
-            this.lblResponseContent.Location = new System.Drawing.Point(447, 14);
+            this.lblResponseContent.Location = new System.Drawing.Point(447, 134);
             this.lblResponseContent.Name = "lblResponseContent";
             this.lblResponseContent.Size = new System.Drawing.Size(97, 13);
-            this.lblResponseContent.TabIndex = 19;
+            this.lblResponseContent.TabIndex = 22;
             this.lblResponseContent.Text = "Response content:";
             // 
             // txtResponse
@@ -209,12 +212,12 @@
             this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponse.Location = new System.Drawing.Point(450, 30);
+            this.txtResponse.Location = new System.Drawing.Point(450, 150);
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResponse.Size = new System.Drawing.Size(420, 520);
-            this.txtResponse.TabIndex = 20;
+            this.txtResponse.Size = new System.Drawing.Size(420, 400);
+            this.txtResponse.TabIndex = 23;
             // 
             // btnSend
             // 
@@ -222,7 +225,7 @@
             this.btnSend.Location = new System.Drawing.Point(747, 591);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(123, 30);
-            this.btnSend.TabIndex = 22;
+            this.btnSend.TabIndex = 25;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.ButtonSendClick);
@@ -271,7 +274,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 638);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(884, 24);
-            this.statusStrip.TabIndex = 23;
+            this.statusStrip.TabIndex = 26;
             // 
             // lblInterval
             // 
@@ -299,7 +302,7 @@
             this.btnClearResponseContent.Location = new System.Drawing.Point(829, 552);
             this.btnClearResponseContent.Name = "btnClearResponseContent";
             this.btnClearResponseContent.Size = new System.Drawing.Size(41, 23);
-            this.btnClearResponseContent.TabIndex = 21;
+            this.btnClearResponseContent.TabIndex = 24;
             this.btnClearResponseContent.Tag = "txtResponse";
             this.btnClearResponseContent.Text = "Clear";
             this.btnClearResponseContent.UseVisualStyleBackColor = true;
@@ -367,11 +370,46 @@
             this.cmbUseClientCertificate.Tag = "btnClientCertificate";
             this.cmbUseClientCertificate.SelectedIndexChanged += new System.EventHandler(this.ComboBoxChanged);
             // 
+            // txtStatus
+            // 
+            this.txtStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStatus.Location = new System.Drawing.Point(450, 30);
+            this.txtStatus.Multiline = true;
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtStatus.Size = new System.Drawing.Size(420, 80);
+            this.txtStatus.TabIndex = 20;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(447, 14);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(40, 13);
+            this.lblStatus.TabIndex = 19;
+            this.lblStatus.Text = "Status:";
+            // 
+            // btnClearStatus
+            // 
+            this.btnClearStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearStatus.Location = new System.Drawing.Point(829, 111);
+            this.btnClearStatus.Name = "btnClearStatus";
+            this.btnClearStatus.Size = new System.Drawing.Size(41, 23);
+            this.btnClearStatus.TabIndex = 21;
+            this.btnClearStatus.Tag = "txtStatus";
+            this.btnClearStatus.Text = "Clear";
+            this.btnClearStatus.UseVisualStyleBackColor = true;
+            this.btnClearStatus.Click += new System.EventHandler(this.ButtonClearClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 662);
+            this.Controls.Add(this.btnClearStatus);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.btnClientCertificate);
             this.Controls.Add(this.lblUseClientCertificate);
             this.Controls.Add(this.cmbUseClientCertificate);
@@ -442,6 +480,9 @@
         private System.Windows.Forms.Button btnClientCertificate;
         private System.Windows.Forms.Label lblUseClientCertificate;
         private System.Windows.Forms.ComboBox cmbUseClientCertificate;
+        private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnClearStatus;
     }
 }
 

@@ -317,11 +317,14 @@ namespace HttpRequester
                     var sendHttpRequestMethod = (SendHttpRequestDelegate)ar.AsyncState;
                     sendHttpRequestMethod.EndInvoke(ar);
                     lblInterval.Text = String.Format("Interval: {0:D2}:{1:D2}:{2:D2}.{3:D3}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
-                    WriteToTextBox(txtResponse, _requestData.ResponseContent;
+                    var message = String.Format("{0:HH:mm:ss.fff}  -  Received {1} chars. {2}{3}", DateTime.Now, _requestData.ResponseContent.Length, lblInterval.Text, Environment.NewLine);
+                    WriteToTextBox(txtResponse, _requestData.ResponseContent);
+                    WriteToTextBox(txtStatus, message);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    var message = String.Format("{0:HH:mm:ss.fff}  -  {1}{2}", DateTime.Now, ex.Message, Environment.NewLine);
+                    WriteToTextBox(txtStatus, message);
                 }
             }));
         }
