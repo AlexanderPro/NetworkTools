@@ -34,6 +34,8 @@ namespace HttpRequester
             public String CertificateFileName { get; set; }
             public String CertificatePassword { get; set; }
             public X509Certificate2 Certificate { get; set; }
+            public Boolean SendRequestInLoop { get; set; }
+            public Int32 SendRequestInterval { get; set; }
 
             public HttpRequestData()
             {
@@ -54,11 +56,15 @@ namespace HttpRequester
                 CertificateFileName = String.Empty;
                 CertificatePassword = String.Empty;
                 Certificate = null;
+                SendRequestInLoop = false;
+                SendRequestInterval = -1;
             }
         }
 
+        private System.Timers.Timer _requestTimer;
         private HttpRequestData _requestData;
         private Stopwatch _requestTimespanMeter;
+        private Boolean _isRequestLoopRunning;
         private delegate void SendHttpRequestDelegate();
 
         public MainForm()
@@ -71,20 +77,12 @@ namespace HttpRequester
         {
             _requestTimespanMeter = new Stopwatch();
             _requestData = new HttpRequestData();
-
-            cmbUseProxy.Items.Clear();
-            cmbUseProxy.DisplayMember = "Key";
-            cmbUseProxy.ValueMember = "Value";
-            cmbUseProxy.Items.Add(new KeyValuePair<String, Boolean>("Yes", true));
-            cmbUseProxy.Items.Add(new KeyValuePair<String, Boolean>("No", false));
+            _isRequestLoopRunning = false;
+            _requestTimer = new System.Timers.Timer();
+            _requestTimer.SynchronizingObject = this;
             cmbUseProxy.SelectedIndex = 1;
-
-            cmbUseClientCertificate.Items.Clear();
-            cmbUseClientCertificate.DisplayMember = "Key";
-            cmbUseClientCertificate.ValueMember = "Value";
-            cmbUseClientCertificate.Items.Add(new KeyValuePair<String, Boolean>("Yes", true));
-            cmbUseClientCertificate.Items.Add(new KeyValuePair<String, Boolean>("No", false));
             cmbUseClientCertificate.SelectedIndex = 1;
+            cmbRequestInLoop.SelectedIndex = 1;
         }
 
         private void ButtonAddHeaderClick(object sender, EventArgs e)
@@ -102,7 +100,7 @@ namespace HttpRequester
         {
             Uri urlAddress;
             Encoding encoding;
-            Int32 timeout;
+            Int32 timeout, interval = -1;
 
             if (String.IsNullOrWhiteSpace(txtUrl.Text) || !Uri.TryCreate(txtUrl.Text, UriKind.RelativeOrAbsolute, out urlAddress))
             {
@@ -132,15 +130,24 @@ namespace HttpRequester
                 return;
             }
 
+            if (cmbRequestInLoop.SelectedIndex == 0 && !Int32.TryParse(txtRequestInterval.Text, out interval))
+            {
+                MessageBox.Show("Field \"Loop interval\" must have an integer number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             _requestData.Url = txtUrl.Text;
             _requestData.Method = txtMethod.Text;
             _requestData.RequestContent = txtRequest.Text;
             _requestData.Encoding = encoding;
             _requestData.Timeout = timeout;
+            _requestData.SendRequestInterval = interval;
             _requestData.UseProxy = cmbUseProxy.SelectedIndex == 0;
             _requestData.UseClientCertificate = cmbUseClientCertificate.SelectedIndex == 0;
+            _requestData.SendRequestInLoop = cmbRequestInLoop.SelectedIndex == 0;
             _requestData.ResponseContent = String.Empty;
             _requestData.Headers.Clear();
+
             foreach (DataGridViewRow row in gridHeaders.Rows)
             {
                 var headerName = (String)row.Cells[1].Value ?? "";
@@ -153,11 +160,35 @@ namespace HttpRequester
                 }
             }
 
-            txtResponse.Text = "";
-            var sendHttpRequestMethod = new SendHttpRequestDelegate(SendHttpRequest);
-            _requestTimespanMeter.Restart();
-            sendHttpRequestMethod.BeginInvoke(SendHttpRequestCallback, sendHttpRequestMethod);
-            btnSend.Enabled = false;
+            var action = new Action(() =>
+            {
+                _requestTimer.Stop();
+                txtResponse.Text = "";
+                var sendHttpRequestMethod = new SendHttpRequestDelegate(SendHttpRequest);
+                _requestTimespanMeter.Restart();
+                sendHttpRequestMethod.BeginInvoke(SendHttpRequestCallback, sendHttpRequestMethod);
+                btnSend.Enabled = false;
+            });
+
+            if (_requestData.SendRequestInLoop)
+            {
+                _requestTimer = new System.Timers.Timer();
+                _requestTimer.SynchronizingObject = this;
+                _requestTimer.Interval = _requestData.SendRequestInterval * 1000;
+                _requestTimer.Elapsed += (s, ev) => { action(); };
+            }
+
+            _isRequestLoopRunning = _requestData.SendRequestInLoop;
+            btnStop.Enabled = _requestData.SendRequestInLoop;
+            action();
+        }
+
+        private void ButtonStopClick(object sender, EventArgs e)
+        {
+            _isRequestLoopRunning = false;
+            _requestTimer.Stop();
+            btnSend.Enabled = true;
+            btnStop.Enabled = false;
         }
 
         private void ButtonClearClick(object sender, EventArgs e)
@@ -183,7 +214,7 @@ namespace HttpRequester
             }
         }
 
-        private void ButtonClientCertificateClick(object sender, EventArgs e)
+        private void ButtonCertificateClick(object sender, EventArgs e)
         {
             var form = new ClientCertificateForm(_requestData.CertificateFileName, _requestData.CertificatePassword);
             var result = form.ShowDialog();
@@ -226,10 +257,10 @@ namespace HttpRequester
         private void ComboBoxChanged(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
-            var buttonId = (String)comboBox.Tag;
-            var controls = Controls.Find(buttonId, true);
-            var button = (Button)controls[0];
-            button.Enabled = comboBox.SelectedIndex == 0;
+            var controlId = (String)comboBox.Tag;
+            var controls = Controls.Find(controlId, true);
+            var control = (Control)controls[0];
+            control.Enabled = comboBox.SelectedIndex == 0;
         }
 
         private void WriteToTextBox(TextBox textBox, String text)
@@ -307,11 +338,10 @@ namespace HttpRequester
 
         private void SendHttpRequestCallback(IAsyncResult ar)
         {
-            Invoke(new Action(() =>
+            var action = new Action(() =>
             {
                 try
                 {
-                    btnSend.Enabled = true;
                     _requestTimespanMeter.Stop();
                     var timeSpan = _requestTimespanMeter.Elapsed;
                     var sendHttpRequestMethod = (SendHttpRequestDelegate)ar.AsyncState;
@@ -326,7 +356,26 @@ namespace HttpRequester
                     var message = String.Format("{0:HH:mm:ss.fff}  -  {1}{2}", DateTime.Now, ex.Message, Environment.NewLine);
                     WriteToTextBox(txtStatus, message);
                 }
-            }));
+
+                if (_requestData.SendRequestInLoop && _isRequestLoopRunning)
+                {
+                    _requestTimer.Start();
+                }
+                else
+                {
+                    btnSend.Enabled = true;
+                    btnStop.Enabled = false;
+                }
+            });
+
+            if (InvokeRequired)
+            {
+                Invoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
     }
 }

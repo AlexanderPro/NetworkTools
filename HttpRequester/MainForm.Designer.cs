@@ -62,6 +62,11 @@
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnClearStatus = new System.Windows.Forms.Button();
+            this.lblRequestInLoop = new System.Windows.Forms.Label();
+            this.cmbRequestInLoop = new System.Windows.Forms.ComboBox();
+            this.txtRequestInterval = new System.Windows.Forms.TextBox();
+            this.lblRequestInterval = new System.Windows.Forms.Label();
+            this.btnStop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
             this.pnlGridBorder.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -182,20 +187,20 @@
             // 
             this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRequest.Location = new System.Drawing.Point(12, 433);
+            this.txtRequest.Location = new System.Drawing.Point(12, 450);
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRequest.Size = new System.Drawing.Size(420, 117);
-            this.txtRequest.TabIndex = 17;
+            this.txtRequest.Size = new System.Drawing.Size(420, 100);
+            this.txtRequest.TabIndex = 21;
             // 
             // lblRequest
             // 
             this.lblRequest.AutoSize = true;
-            this.lblRequest.Location = new System.Drawing.Point(15, 417);
+            this.lblRequest.Location = new System.Drawing.Point(12, 434);
             this.lblRequest.Name = "lblRequest";
             this.lblRequest.Size = new System.Drawing.Size(89, 13);
-            this.lblRequest.TabIndex = 16;
+            this.lblRequest.TabIndex = 20;
             this.lblRequest.Text = "Request content:";
             // 
             // lblResponseContent
@@ -204,7 +209,7 @@
             this.lblResponseContent.Location = new System.Drawing.Point(447, 134);
             this.lblResponseContent.Name = "lblResponseContent";
             this.lblResponseContent.Size = new System.Drawing.Size(97, 13);
-            this.lblResponseContent.TabIndex = 22;
+            this.lblResponseContent.TabIndex = 26;
             this.lblResponseContent.Text = "Response content:";
             // 
             // txtResponse
@@ -217,15 +222,15 @@
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResponse.Size = new System.Drawing.Size(420, 400);
-            this.txtResponse.TabIndex = 23;
+            this.txtResponse.TabIndex = 27;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(747, 591);
+            this.btnSend.Location = new System.Drawing.Point(692, 591);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(123, 30);
-            this.btnSend.TabIndex = 25;
+            this.btnSend.Size = new System.Drawing.Size(86, 30);
+            this.btnSend.TabIndex = 29;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.ButtonSendClick);
@@ -274,7 +279,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 638);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(884, 24);
-            this.statusStrip.TabIndex = 26;
+            this.statusStrip.TabIndex = 31;
             // 
             // lblInterval
             // 
@@ -290,7 +295,7 @@
             this.btnClearRequestContent.Location = new System.Drawing.Point(391, 552);
             this.btnClearRequestContent.Name = "btnClearRequestContent";
             this.btnClearRequestContent.Size = new System.Drawing.Size(41, 23);
-            this.btnClearRequestContent.TabIndex = 18;
+            this.btnClearRequestContent.TabIndex = 22;
             this.btnClearRequestContent.Tag = "txtRequest";
             this.btnClearRequestContent.Text = "Clear";
             this.btnClearRequestContent.UseVisualStyleBackColor = true;
@@ -302,7 +307,7 @@
             this.btnClearResponseContent.Location = new System.Drawing.Point(829, 552);
             this.btnClearResponseContent.Name = "btnClearResponseContent";
             this.btnClearResponseContent.Size = new System.Drawing.Size(41, 23);
-            this.btnClearResponseContent.TabIndex = 24;
+            this.btnClearResponseContent.TabIndex = 28;
             this.btnClearResponseContent.Tag = "txtResponse";
             this.btnClearResponseContent.Text = "Clear";
             this.btnClearResponseContent.UseVisualStyleBackColor = true;
@@ -312,9 +317,12 @@
             // 
             this.cmbUseProxy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUseProxy.FormattingEnabled = true;
+            this.cmbUseProxy.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
             this.cmbUseProxy.Location = new System.Drawing.Point(12, 316);
             this.cmbUseProxy.Name = "cmbUseProxy";
-            this.cmbUseProxy.Size = new System.Drawing.Size(92, 21);
+            this.cmbUseProxy.Size = new System.Drawing.Size(107, 21);
             this.cmbUseProxy.TabIndex = 11;
             this.cmbUseProxy.Tag = "btnProxy";
             this.cmbUseProxy.SelectedIndexChanged += new System.EventHandler(this.ComboBoxChanged);
@@ -331,7 +339,7 @@
             // btnProxy
             // 
             this.btnProxy.Enabled = false;
-            this.btnProxy.Location = new System.Drawing.Point(110, 315);
+            this.btnProxy.Location = new System.Drawing.Point(122, 315);
             this.btnProxy.Name = "btnProxy";
             this.btnProxy.Size = new System.Drawing.Size(74, 23);
             this.btnProxy.TabIndex = 12;
@@ -342,18 +350,18 @@
             // btnClientCertificate
             // 
             this.btnClientCertificate.Enabled = false;
-            this.btnClientCertificate.Location = new System.Drawing.Point(337, 315);
+            this.btnClientCertificate.Location = new System.Drawing.Point(357, 315);
             this.btnClientCertificate.Name = "btnClientCertificate";
-            this.btnClientCertificate.Size = new System.Drawing.Size(94, 23);
+            this.btnClientCertificate.Size = new System.Drawing.Size(74, 23);
             this.btnClientCertificate.TabIndex = 15;
-            this.btnClientCertificate.Text = "Client Certificate";
+            this.btnClientCertificate.Text = "Certificate";
             this.btnClientCertificate.UseVisualStyleBackColor = true;
-            this.btnClientCertificate.Click += new System.EventHandler(this.ButtonClientCertificateClick);
+            this.btnClientCertificate.Click += new System.EventHandler(this.ButtonCertificateClick);
             // 
             // lblUseClientCertificate
             // 
             this.lblUseClientCertificate.AutoSize = true;
-            this.lblUseClientCertificate.Location = new System.Drawing.Point(223, 299);
+            this.lblUseClientCertificate.Location = new System.Drawing.Point(245, 299);
             this.lblUseClientCertificate.Name = "lblUseClientCertificate";
             this.lblUseClientCertificate.Size = new System.Drawing.Size(108, 13);
             this.lblUseClientCertificate.TabIndex = 13;
@@ -363,7 +371,10 @@
             // 
             this.cmbUseClientCertificate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUseClientCertificate.FormattingEnabled = true;
-            this.cmbUseClientCertificate.Location = new System.Drawing.Point(223, 316);
+            this.cmbUseClientCertificate.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cmbUseClientCertificate.Location = new System.Drawing.Point(245, 316);
             this.cmbUseClientCertificate.Name = "cmbUseClientCertificate";
             this.cmbUseClientCertificate.Size = new System.Drawing.Size(108, 21);
             this.cmbUseClientCertificate.TabIndex = 14;
@@ -379,7 +390,7 @@
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtStatus.Size = new System.Drawing.Size(420, 80);
-            this.txtStatus.TabIndex = 20;
+            this.txtStatus.TabIndex = 24;
             // 
             // lblStatus
             // 
@@ -387,7 +398,7 @@
             this.lblStatus.Location = new System.Drawing.Point(447, 14);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(40, 13);
-            this.lblStatus.TabIndex = 19;
+            this.lblStatus.TabIndex = 23;
             this.lblStatus.Text = "Status:";
             // 
             // btnClearStatus
@@ -396,17 +407,75 @@
             this.btnClearStatus.Location = new System.Drawing.Point(829, 111);
             this.btnClearStatus.Name = "btnClearStatus";
             this.btnClearStatus.Size = new System.Drawing.Size(41, 23);
-            this.btnClearStatus.TabIndex = 21;
+            this.btnClearStatus.TabIndex = 25;
             this.btnClearStatus.Tag = "txtStatus";
             this.btnClearStatus.Text = "Clear";
             this.btnClearStatus.UseVisualStyleBackColor = true;
             this.btnClearStatus.Click += new System.EventHandler(this.ButtonClearClick);
+            // 
+            // lblRequestInLoop
+            // 
+            this.lblRequestInLoop.AutoSize = true;
+            this.lblRequestInLoop.Location = new System.Drawing.Point(12, 364);
+            this.lblRequestInLoop.Name = "lblRequestInLoop";
+            this.lblRequestInLoop.Size = new System.Drawing.Size(107, 13);
+            this.lblRequestInLoop.TabIndex = 16;
+            this.lblRequestInLoop.Text = "Send request in loop:";
+            // 
+            // cmbRequestInLoop
+            // 
+            this.cmbRequestInLoop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRequestInLoop.FormattingEnabled = true;
+            this.cmbRequestInLoop.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cmbRequestInLoop.Location = new System.Drawing.Point(12, 380);
+            this.cmbRequestInLoop.Name = "cmbRequestInLoop";
+            this.cmbRequestInLoop.Size = new System.Drawing.Size(107, 21);
+            this.cmbRequestInLoop.TabIndex = 17;
+            this.cmbRequestInLoop.Tag = "txtRequestInterval";
+            this.cmbRequestInLoop.SelectedIndexChanged += new System.EventHandler(this.ComboBoxChanged);
+            // 
+            // txtRequestInterval
+            // 
+            this.txtRequestInterval.Enabled = false;
+            this.txtRequestInterval.Location = new System.Drawing.Point(125, 381);
+            this.txtRequestInterval.Name = "txtRequestInterval";
+            this.txtRequestInterval.Size = new System.Drawing.Size(71, 20);
+            this.txtRequestInterval.TabIndex = 19;
+            this.txtRequestInterval.Text = "5";
+            // 
+            // lblRequestInterval
+            // 
+            this.lblRequestInterval.AutoSize = true;
+            this.lblRequestInterval.Location = new System.Drawing.Point(125, 365);
+            this.lblRequestInterval.Name = "lblRequestInterval";
+            this.lblRequestInterval.Size = new System.Drawing.Size(58, 13);
+            this.lblRequestInterval.TabIndex = 18;
+            this.lblRequestInterval.Text = "(Seconds):";
+            // 
+            // btnStop
+            // 
+            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStop.Enabled = false;
+            this.btnStop.Location = new System.Drawing.Point(784, 591);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(86, 30);
+            this.btnStop.TabIndex = 30;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.ButtonStopClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 662);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.lblRequestInterval);
+            this.Controls.Add(this.txtRequestInterval);
+            this.Controls.Add(this.lblRequestInLoop);
+            this.Controls.Add(this.cmbRequestInLoop);
             this.Controls.Add(this.btnClearStatus);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.txtStatus);
@@ -483,6 +552,11 @@
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnClearStatus;
+        private System.Windows.Forms.Label lblRequestInLoop;
+        private System.Windows.Forms.ComboBox cmbRequestInLoop;
+        private System.Windows.Forms.TextBox txtRequestInterval;
+        private System.Windows.Forms.Label lblRequestInterval;
+        private System.Windows.Forms.Button btnStop;
     }
 }
 
