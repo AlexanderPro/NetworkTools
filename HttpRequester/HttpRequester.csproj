@@ -107,6 +107,10 @@
     <Content Include="Resourses\HTTP.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetDir)*.dll" "$(SolutionDir)Applications\$(ProjectName)\" /Y
+xcopy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)Applications\$(ProjectName)\" /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
