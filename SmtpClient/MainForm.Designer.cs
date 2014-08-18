@@ -51,7 +51,7 @@
             this.lblFrom = new System.Windows.Forms.Label();
             this.txtSenderName = new System.Windows.Forms.TextBox();
             this.lblSenderName = new System.Windows.Forms.Label();
-            this.gbMail = new System.Windows.Forms.GroupBox();
+            this.gbMessage = new System.Windows.Forms.GroupBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.chbHtml = new System.Windows.Forms.CheckBox();
             this.txtBody = new System.Windows.Forms.TextBox();
@@ -64,7 +64,7 @@
             this.lblSubject = new System.Windows.Forms.Label();
             this.gbSmtpServer.SuspendLayout();
             this.gbAddress.SuspendLayout();
-            this.gbMail.SuspendLayout();
+            this.gbMessage.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblServerName
@@ -286,27 +286,27 @@
             this.lblSenderName.TabIndex = 0;
             this.lblSenderName.Text = "Sender Name:";
             // 
-            // gbMail
+            // gbMessage
             // 
-            this.gbMail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gbMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbMail.Controls.Add(this.btnSend);
-            this.gbMail.Controls.Add(this.chbHtml);
-            this.gbMail.Controls.Add(this.txtBody);
-            this.gbMail.Controls.Add(this.lblBody);
-            this.gbMail.Controls.Add(this.txtBodyEncoding);
-            this.gbMail.Controls.Add(this.lblBodyEncoding);
-            this.gbMail.Controls.Add(this.txtSubjectEncoding);
-            this.gbMail.Controls.Add(this.lblSubjectEncoding);
-            this.gbMail.Controls.Add(this.txtSubject);
-            this.gbMail.Controls.Add(this.lblSubject);
-            this.gbMail.Location = new System.Drawing.Point(12, 202);
-            this.gbMail.Name = "gbMail";
-            this.gbMail.Size = new System.Drawing.Size(714, 329);
-            this.gbMail.TabIndex = 2;
-            this.gbMail.TabStop = false;
-            this.gbMail.Text = "Mail";
+            this.gbMessage.Controls.Add(this.btnSend);
+            this.gbMessage.Controls.Add(this.chbHtml);
+            this.gbMessage.Controls.Add(this.txtBody);
+            this.gbMessage.Controls.Add(this.lblBody);
+            this.gbMessage.Controls.Add(this.txtBodyEncoding);
+            this.gbMessage.Controls.Add(this.lblBodyEncoding);
+            this.gbMessage.Controls.Add(this.txtSubjectEncoding);
+            this.gbMessage.Controls.Add(this.lblSubjectEncoding);
+            this.gbMessage.Controls.Add(this.txtSubject);
+            this.gbMessage.Controls.Add(this.lblSubject);
+            this.gbMessage.Location = new System.Drawing.Point(12, 202);
+            this.gbMessage.Name = "gbMessage";
+            this.gbMessage.Size = new System.Drawing.Size(714, 329);
+            this.gbMessage.TabIndex = 2;
+            this.gbMessage.TabStop = false;
+            this.gbMessage.Text = "Message";
             // 
             // btnSend
             // 
@@ -408,7 +408,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 544);
-            this.Controls.Add(this.gbMail);
+            this.Controls.Add(this.gbMessage);
             this.Controls.Add(this.gbAddress);
             this.Controls.Add(this.gbSmtpServer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -419,8 +419,8 @@
             this.gbSmtpServer.PerformLayout();
             this.gbAddress.ResumeLayout(false);
             this.gbAddress.PerformLayout();
-            this.gbMail.ResumeLayout(false);
-            this.gbMail.PerformLayout();
+            this.gbMessage.ResumeLayout(false);
+            this.gbMessage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -449,7 +449,7 @@
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.TextBox txtSenderName;
         private System.Windows.Forms.Label lblSenderName;
-        private System.Windows.Forms.GroupBox gbMail;
+        private System.Windows.Forms.GroupBox gbMessage;
         private System.Windows.Forms.CheckBox chbHtml;
         private System.Windows.Forms.TextBox txtBody;
         private System.Windows.Forms.Label lblBody;
