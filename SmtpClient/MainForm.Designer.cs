@@ -311,6 +311,8 @@
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.Image = global::SmtpClient.Properties.Resources.SendMail;
+            this.btnSend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSend.Location = new System.Drawing.Point(580, 287);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(111, 31);

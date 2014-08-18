@@ -61,27 +61,27 @@ namespace SmtpClient
                 return;
             }
 
-            var emailSender = new EmailSender()
-            {
-                Server = serverName,
-                Port = serverPort,
-                UserName = userName,
-                Password = password,
-                UseSSL = useSSL,
-                StringTo = to,
-                StringCC = cc,
-                StringBcc = bcc,
-                From = from,
-                SenderName = senderName,
-                Subject = subject,
-                Body = body,
-                SubjectEncoding = subjectEncoding,
-                BodyEncoding = bodyEncoding,
-                IsBodyHtml = isBodyHtml
-            };
-
             try
             {
+                var emailSender = new EmailSender()
+                {
+                    Server = serverName,
+                    Port = serverPort,
+                    UserName = userName,
+                    Password = password,
+                    UseSSL = useSSL,
+                    StringTo = to,
+                    StringCC = cc,
+                    StringBcc = bcc,
+                    From = from,
+                    SenderName = senderName,
+                    Subject = subject,
+                    Body = body,
+                    SubjectEncoding = subjectEncoding,
+                    BodyEncoding = bodyEncoding,
+                    IsBodyHtml = isBodyHtml
+                };
+
                 emailSender.SendMail();
             }
             catch (Exception ex)
