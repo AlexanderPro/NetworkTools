@@ -44,7 +44,6 @@
             this.lblRequest = new System.Windows.Forms.Label();
             this.lblResponseContent = new System.Windows.Forms.Label();
             this.txtResponse = new System.Windows.Forms.TextBox();
-            this.btnSend = new System.Windows.Forms.Button();
             this.btnAddHeader = new System.Windows.Forms.Button();
             this.lblEncoding = new System.Windows.Forms.Label();
             this.txtEncoding = new System.Windows.Forms.TextBox();
@@ -66,7 +65,10 @@
             this.cmbRequestInLoop = new System.Windows.Forms.ComboBox();
             this.txtRequestInterval = new System.Windows.Forms.TextBox();
             this.lblRequestInterval = new System.Windows.Forms.Label();
+            this.btnLoadSettings = new System.Windows.Forms.Button();
+            this.btnSaveSettings = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
             this.pnlGridBorder.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -179,9 +181,9 @@
             this.lblHeaders.AutoSize = true;
             this.lblHeaders.Location = new System.Drawing.Point(12, 134);
             this.lblHeaders.Name = "lblHeaders";
-            this.lblHeaders.Size = new System.Drawing.Size(50, 13);
+            this.lblHeaders.Size = new System.Drawing.Size(93, 13);
             this.lblHeaders.TabIndex = 8;
-            this.lblHeaders.Text = "Headers:";
+            this.lblHeaders.Text = "Request Headers:";
             // 
             // txtRequest
             // 
@@ -224,17 +226,6 @@
             this.txtResponse.Size = new System.Drawing.Size(420, 400);
             this.txtResponse.TabIndex = 27;
             // 
-            // btnSend
-            // 
-            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(692, 591);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(86, 30);
-            this.btnSend.TabIndex = 29;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.ButtonSendClick);
-            // 
             // btnAddHeader
             // 
             this.btnAddHeader.Location = new System.Drawing.Point(397, 267);
@@ -243,7 +234,7 @@
             this.btnAddHeader.TabIndex = 9;
             this.btnAddHeader.Text = "+";
             this.btnAddHeader.UseVisualStyleBackColor = true;
-            this.btnAddHeader.Click += new System.EventHandler(this.ButtonAddHeaderClick);
+            this.btnAddHeader.Click += new System.EventHandler(this.ButtonHeaderClick);
             // 
             // lblEncoding
             // 
@@ -274,12 +265,10 @@
             // 
             // statusStrip
             // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblInterval});
             this.statusStrip.Location = new System.Drawing.Point(0, 638);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(884, 24);
-            this.statusStrip.TabIndex = 31;
+            this.statusStrip.TabIndex = 33;
             // 
             // lblInterval
             // 
@@ -292,7 +281,7 @@
             // btnClearRequestContent
             // 
             this.btnClearRequestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClearRequestContent.Location = new System.Drawing.Point(391, 552);
+            this.btnClearRequestContent.Location = new System.Drawing.Point(391, 553);
             this.btnClearRequestContent.Name = "btnClearRequestContent";
             this.btnClearRequestContent.Size = new System.Drawing.Size(41, 23);
             this.btnClearRequestContent.TabIndex = 22;
@@ -304,7 +293,7 @@
             // btnClearResponseContent
             // 
             this.btnClearResponseContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearResponseContent.Location = new System.Drawing.Point(829, 552);
+            this.btnClearResponseContent.Location = new System.Drawing.Point(829, 553);
             this.btnClearResponseContent.Name = "btnClearResponseContent";
             this.btnClearResponseContent.Size = new System.Drawing.Size(41, 23);
             this.btnClearResponseContent.TabIndex = 28;
@@ -454,23 +443,68 @@
             this.lblRequestInterval.TabIndex = 18;
             this.lblRequestInterval.Text = "(Seconds):";
             // 
+            // btnLoadSettings
+            // 
+            this.btnLoadSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLoadSettings.Image = global::HttpRequester.Properties.Resources.Open;
+            this.btnLoadSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLoadSettings.Location = new System.Drawing.Point(144, 593);
+            this.btnLoadSettings.Name = "btnLoadSettings";
+            this.btnLoadSettings.Size = new System.Drawing.Size(114, 30);
+            this.btnLoadSettings.TabIndex = 30;
+            this.btnLoadSettings.Text = "Load settings ...";
+            this.btnLoadSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLoadSettings.UseVisualStyleBackColor = true;
+            this.btnLoadSettings.Click += new System.EventHandler(this.ButtonLoadSettingsClick);
+            // 
+            // btnSaveSettings
+            // 
+            this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveSettings.Image = global::HttpRequester.Properties.Resources.Save;
+            this.btnSaveSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveSettings.Location = new System.Drawing.Point(12, 593);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.Size = new System.Drawing.Size(116, 30);
+            this.btnSaveSettings.TabIndex = 29;
+            this.btnSaveSettings.Text = "Save settings ...";
+            this.btnSaveSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveSettings.UseVisualStyleBackColor = true;
+            this.btnSaveSettings.Click += new System.EventHandler(this.ButtonSaveSettingsClick);
+            // 
             // btnStop
             // 
             this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(784, 591);
+            this.btnStop.Image = global::HttpRequester.Properties.Resources.Stop;
+            this.btnStop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStop.Location = new System.Drawing.Point(784, 593);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(86, 30);
-            this.btnStop.TabIndex = 30;
+            this.btnStop.TabIndex = 32;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.ButtonStopClick);
+            // 
+            // btnSend
+            // 
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.Image = global::HttpRequester.Properties.Resources.Send;
+            this.btnSend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSend.Location = new System.Drawing.Point(692, 593);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(86, 30);
+            this.btnSend.TabIndex = 31;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.ButtonSendClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 662);
+            this.Controls.Add(this.btnLoadSettings);
+            this.Controls.Add(this.btnSaveSettings);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lblRequestInterval);
             this.Controls.Add(this.txtRequestInterval);
@@ -507,7 +541,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Http Requester";
+            this.Text = "HTTP Client";
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).EndInit();
             this.pnlGridBorder.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
@@ -557,6 +591,8 @@
         private System.Windows.Forms.TextBox txtRequestInterval;
         private System.Windows.Forms.Label lblRequestInterval;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnLoadSettings;
+        private System.Windows.Forms.Button btnSaveSettings;
     }
 }
 

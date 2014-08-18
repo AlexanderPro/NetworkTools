@@ -13,8 +13,6 @@ namespace HttpRequester
 {
     public partial class ClientCertificateForm : Form
     {
-        public X509Certificate2 Certificate { get; private set; }
-
         public String FileName 
         {
             get
@@ -58,7 +56,7 @@ namespace HttpRequester
 
             try
             {
-                Certificate = String.IsNullOrEmpty(txtPassword.Text) ? new X509Certificate2(txtFileName.Text) : new X509Certificate2(txtFileName.Text, txtPassword.Text);
+                var certificate = String.IsNullOrEmpty(txtPassword.Text) ? new X509Certificate2(txtFileName.Text) : new X509Certificate2(txtFileName.Text, txtPassword.Text);
             }
             catch
             {
