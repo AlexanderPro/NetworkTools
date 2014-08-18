@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 
-namespace HttpRequester
+namespace HttpClient
 {
     public partial class MainForm : Form
     {

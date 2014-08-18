@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HttpRequester
+namespace HttpClient
 {
     public partial class HttpHeaderForm : Form
     {

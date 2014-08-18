@@ -1,6 +1,6 @@
-﻿namespace HttpRequester
+﻿namespace HttpClient
 {
-    partial class ClientCertificateForm
+    partial class HttpHeaderForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,10 @@
         {
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtFileName = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblFileName = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.btnBrowseFile = new System.Windows.Forms.Button();
+            this.txtHeaderName = new System.Windows.Forms.TextBox();
+            this.txtHeaderValue = new System.Windows.Forms.TextBox();
+            this.lblHeaderName = new System.Windows.Forms.Label();
+            this.lblHeaderValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnOk
@@ -42,7 +41,7 @@
             this.btnOk.Location = new System.Drawing.Point(297, 120);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(56, 23);
-            this.btnOk.TabIndex = 5;
+            this.btnOk.TabIndex = 4;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.ButtonOkClick);
@@ -52,75 +51,63 @@
             this.btnCancel.Location = new System.Drawing.Point(359, 120);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(56, 23);
-            this.btnCancel.TabIndex = 6;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
-            // txtFileName
+            // txtHeaderName
             // 
-            this.txtFileName.Location = new System.Drawing.Point(23, 31);
-            this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(352, 20);
-            this.txtFileName.TabIndex = 1;
+            this.txtHeaderName.Location = new System.Drawing.Point(23, 31);
+            this.txtHeaderName.Name = "txtHeaderName";
+            this.txtHeaderName.Size = new System.Drawing.Size(392, 20);
+            this.txtHeaderName.TabIndex = 1;
             // 
-            // txtPassword
+            // txtHeaderValue
             // 
-            this.txtPassword.Location = new System.Drawing.Point(23, 81);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(392, 20);
-            this.txtPassword.TabIndex = 4;
+            this.txtHeaderValue.Location = new System.Drawing.Point(23, 81);
+            this.txtHeaderValue.Name = "txtHeaderValue";
+            this.txtHeaderValue.Size = new System.Drawing.Size(392, 20);
+            this.txtHeaderValue.TabIndex = 3;
             // 
-            // lblFileName
+            // lblHeaderName
             // 
-            this.lblFileName.AutoSize = true;
-            this.lblFileName.Location = new System.Drawing.Point(20, 15);
-            this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(26, 13);
-            this.lblFileName.TabIndex = 0;
-            this.lblFileName.Text = "File:";
+            this.lblHeaderName.AutoSize = true;
+            this.lblHeaderName.Location = new System.Drawing.Point(20, 15);
+            this.lblHeaderName.Name = "lblHeaderName";
+            this.lblHeaderName.Size = new System.Drawing.Size(76, 13);
+            this.lblHeaderName.TabIndex = 0;
+            this.lblHeaderName.Text = "Header Name:";
             // 
-            // lblPassword
+            // lblHeaderValue
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(20, 65);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(56, 13);
-            this.lblPassword.TabIndex = 3;
-            this.lblPassword.Text = "Password:";
+            this.lblHeaderValue.AutoSize = true;
+            this.lblHeaderValue.Location = new System.Drawing.Point(20, 65);
+            this.lblHeaderValue.Name = "lblHeaderValue";
+            this.lblHeaderValue.Size = new System.Drawing.Size(75, 13);
+            this.lblHeaderValue.TabIndex = 2;
+            this.lblHeaderValue.Text = "Header Value:";
             // 
-            // btnBrowseFile
-            // 
-            this.btnBrowseFile.Location = new System.Drawing.Point(381, 29);
-            this.btnBrowseFile.Name = "btnBrowseFile";
-            this.btnBrowseFile.Size = new System.Drawing.Size(34, 23);
-            this.btnBrowseFile.TabIndex = 2;
-            this.btnBrowseFile.Text = "...";
-            this.btnBrowseFile.UseVisualStyleBackColor = true;
-            this.btnBrowseFile.Click += new System.EventHandler(this.ButtonBrowseFileClick);
-            // 
-            // ClientCertificateForm
+            // HttpHeaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 160);
-            this.Controls.Add(this.btnBrowseFile);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtFileName);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblFileName);
+            this.Controls.Add(this.txtHeaderValue);
+            this.Controls.Add(this.txtHeaderName);
+            this.Controls.Add(this.lblHeaderValue);
+            this.Controls.Add(this.lblHeaderName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ClientCertificateForm";
+            this.Name = "HttpHeaderForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Client Certificate";
+            this.Text = "Http Header";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,10 +118,9 @@
 
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtFileName;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblFileName;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Button btnBrowseFile;
+        private System.Windows.Forms.TextBox txtHeaderName;
+        private System.Windows.Forms.TextBox txtHeaderValue;
+        private System.Windows.Forms.Label lblHeaderName;
+        private System.Windows.Forms.Label lblHeaderValue;
     }
 }

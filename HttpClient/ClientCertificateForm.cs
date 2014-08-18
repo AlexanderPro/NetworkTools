@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
-namespace HttpRequester
+namespace HttpClient
 {
     public partial class ClientCertificateForm : Form
     {

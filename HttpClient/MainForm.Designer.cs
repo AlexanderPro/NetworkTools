@@ -1,4 +1,4 @@
-﻿namespace HttpRequester
+﻿namespace HttpClient
 {
     partial class MainForm
     {
@@ -71,7 +71,6 @@
             this.btnSend = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).BeginInit();
             this.pnlGridBorder.SuspendLayout();
-            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUrl
@@ -265,9 +264,9 @@
             // 
             // statusStrip
             // 
-            this.statusStrip.Location = new System.Drawing.Point(0, 638);
+            this.statusStrip.Location = new System.Drawing.Point(0, 640);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(884, 24);
+            this.statusStrip.Size = new System.Drawing.Size(884, 22);
             this.statusStrip.TabIndex = 33;
             // 
             // lblInterval
@@ -446,9 +445,9 @@
             // btnLoadSettings
             // 
             this.btnLoadSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLoadSettings.Image = global::HttpRequester.Properties.Resources.Open;
+            this.btnLoadSettings.Image = global::HttpClient.Properties.Resources.Open;
             this.btnLoadSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoadSettings.Location = new System.Drawing.Point(144, 593);
+            this.btnLoadSettings.Location = new System.Drawing.Point(134, 593);
             this.btnLoadSettings.Name = "btnLoadSettings";
             this.btnLoadSettings.Size = new System.Drawing.Size(114, 30);
             this.btnLoadSettings.TabIndex = 30;
@@ -460,7 +459,7 @@
             // btnSaveSettings
             // 
             this.btnSaveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveSettings.Image = global::HttpRequester.Properties.Resources.Save;
+            this.btnSaveSettings.Image = global::HttpClient.Properties.Resources.Save;
             this.btnSaveSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSaveSettings.Location = new System.Drawing.Point(12, 593);
             this.btnSaveSettings.Name = "btnSaveSettings";
@@ -475,7 +474,7 @@
             // 
             this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStop.Enabled = false;
-            this.btnStop.Image = global::HttpRequester.Properties.Resources.Stop;
+            this.btnStop.Image = global::HttpClient.Properties.Resources.Stop;
             this.btnStop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStop.Location = new System.Drawing.Point(784, 593);
             this.btnStop.Name = "btnStop";
@@ -488,7 +487,7 @@
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Image = global::HttpRequester.Properties.Resources.Send;
+            this.btnSend.Image = global::HttpClient.Properties.Resources.Send;
             this.btnSend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSend.Location = new System.Drawing.Point(692, 593);
             this.btnSend.Name = "btnSend";
@@ -544,8 +543,6 @@
             this.Text = "HTTP Client";
             ((System.ComponentModel.ISupportInitialize)(this.gridHeaders)).EndInit();
             this.pnlGridBorder.ResumeLayout(false);
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

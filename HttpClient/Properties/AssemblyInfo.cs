@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HttpRequester")]
+[assembly: AssemblyTitle("HttpClient")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HttpRequester")]
+[assembly: AssemblyProduct("HttpClient")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2d698aa8-ef76-41a0-a1a2-72fce499245e")]
+[assembly: Guid("05840bfa-386f-46f1-ac3f-e27126e562aa")]
 
 // Version information for an assembly consists of the following four values:
 //

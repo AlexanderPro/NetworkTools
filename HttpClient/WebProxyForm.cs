@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Web;
 
-namespace HttpRequester
+namespace HttpClient
 {
     public partial class WebProxyForm : Form
     {

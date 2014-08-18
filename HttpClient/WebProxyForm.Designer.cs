@@ -1,4 +1,4 @@
-﻿namespace HttpRequester
+﻿namespace HttpClient
 {
     partial class WebProxyForm
     {

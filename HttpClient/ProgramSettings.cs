@@ -5,7 +5,7 @@ using System.Xml.Linq;
 using System.Text;
 using System.IO;
 
-namespace HttpRequester
+namespace HttpClient
 {
     static class ProgramSettings
     {

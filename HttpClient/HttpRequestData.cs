@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography.X509Certificates;
 
-namespace HttpRequester
+namespace HttpClient
 {
     class HttpRequestData
     {

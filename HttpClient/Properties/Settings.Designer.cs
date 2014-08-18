@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HttpRequester.Properties
+namespace HttpClient.Properties
 {
 
 

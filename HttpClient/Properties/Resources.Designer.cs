@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HttpRequester.Properties {
+namespace HttpClient.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HttpRequester.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HttpRequester.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HttpClient.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,13 @@ namespace HttpRequester.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        internal static System.Drawing.Icon HTTP {
+            get {
+                object obj = ResourceManager.GetObject("HTTP", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

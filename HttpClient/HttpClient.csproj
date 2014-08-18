@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{76DB2A11-7A74-4434-A5C3-5562EC37A323}</ProjectGuid>
+    <ProjectGuid>{97A14517-E9A1-4A42-A0D8-41043253EA89}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HttpRequester</RootNamespace>
-    <AssemblyName>HttpRequester</AssemblyName>
+    <RootNamespace>HttpClient</RootNamespace>
+    <AssemblyName>HttpClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -74,12 +74,6 @@
     <Compile Include="WebProxyForm.Designer.cs">
       <DependentUpon>WebProxyForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ClientCertificateForm.resx">
-      <DependentUpon>ClientCertificateForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HttpHeaderForm.resx">
-      <DependentUpon>HttpHeaderForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,9 +87,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WebProxyForm.resx">
-      <DependentUpon>WebProxyForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,11 +98,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resourses\Send.png" />
+    <None Include="Resourses\HTTP.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resourses\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resourses\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Send.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resourses\Stop.png" />
-    <Content Include="Resourses\HTTP.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
