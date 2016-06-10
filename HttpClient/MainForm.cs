@@ -317,7 +317,7 @@ namespace HttpClient
             {
                 _requestData.Certificate = String.IsNullOrEmpty(_requestData.CertificatePassword) ? new X509Certificate2(_requestData.CertificateFileName) : new X509Certificate2(_requestData.CertificateFileName, _requestData.CertificatePassword);
             }
-            
+
             _requestData.Headers.Clear();
             foreach (DataGridViewRow row in gridHeaders.Rows)
             {
@@ -336,6 +336,11 @@ namespace HttpClient
 
         private void SendHttpRequest()
         {
+            if (new Uri(_requestData.Url).Scheme == Uri.UriSchemeHttps)
+            {
+                ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, policyErrors) => { return true; };
+            }
+
             var webRequest = (HttpWebRequest)WebRequest.Create(_requestData.Url);
             webRequest.Method = _requestData.Method;
             webRequest.Timeout = _requestData.Timeout;
